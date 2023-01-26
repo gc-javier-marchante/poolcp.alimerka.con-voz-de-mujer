@@ -1,0 +1,21 @@
+<table {% if not download_mode %} class="min-w-100 table table-row-bordered table-row-dashed gy-4 align-middle fw-boldest" {% if datatable %} data-datatable {% endif %} {% if select %} data-select-key="{{ select.key }}" data-select-renderer="{{ select.renderer }}" {% endif %} {% endif %}>
+	<thead {% if not download_mode %} class="fs-7 text-gray-400 text-uppercase" {% endif %}>
+		{% include 'elements/list/header.twig' with {tr: header, download_mode: download_mode} %}
+	</thead>
+	<tbody {% if not download_mode %} class="fs-5" {% endif %}>
+		{% if elements %}
+			{% for element in elements %}
+				{% if force_element_index %}
+					{% set element = element|merge({(force_element_index): element}) %}
+				{% endif %}
+				{% include 'elements/list/row.twig' with {tr: rows, download_mode: download_mode} %}
+			{% endfor %}
+		{% elseif not download_mode and not datatable %}
+			<tr>
+				<td colspan="{{ header.ths | length }}" class="text-center">
+					{{ i18n__('No results.') }}
+				</td>
+			</tr>
+		{% endif %}
+	</tbody>
+</table>

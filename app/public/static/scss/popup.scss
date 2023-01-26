@@ -1,0 +1,29 @@
+#banner.otFloatingRoundedCorner {
+    position: absolute;
+    top: 7rem;
+    bottom: auto;
+    z-index: 2147483645;
+    background-color: #fff;
+    width: auto;
+    right: 1em;
+    left: 1em;
+    font-size: 16px;
+    max-height: 90%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-shadow: 0 0 20px rgb(0 0 0 / 40%);
+    max-width: 360px !important;
+    border-radius: 4px !important;
+    box-shadow: rgb(0 0 0 / 40%) 0 0 1px 0, rgb(0 0 0 / 8%) 0 5px 10px 0 !important;
+    font-size: 16px;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+@media all and (min-width: 768px) {
+    #banner.otFloatingRoundedCorner {
+        position: fixed;
+        top: auto;
+        bottom: 1rem;
+    }
+}

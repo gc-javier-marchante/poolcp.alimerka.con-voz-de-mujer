@@ -1,0 +1,13 @@
+<div class="container">
+	<div class="card mb-7">
+		<div class="card-body ">
+			<div>
+				Enviado a
+				{{ participant.Participant.alternative_email ? participant.Participant.alternative_email : participant.Participant.email }}
+			</div>
+			<div class="mt-2">
+				<a href="{{ router_url({controller: 'Participants', action: 'index'}) }}" class="btn btn-sm btn-primary">Volver</a>
+			</div>
+		</div>
+	</div>
+</div>

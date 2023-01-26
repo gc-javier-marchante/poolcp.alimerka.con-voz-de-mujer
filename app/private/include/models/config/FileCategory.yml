@@ -1,0 +1,40 @@
+validation:
+    name:
+        - required
+        - notempty
+    file_category_id:
+        - id
+validOrderByExpressions:
+    - id
+    - name
+    - file_category_id
+    - created
+    - created_by_user_id
+    - modified
+    - modified_by_user_id
+filter:
+    simple:
+        - id
+        - name
+    advanced:
+        - id
+        - name
+        - file_category_id
+        - created
+displayFields:
+    - name
+listFields:
+    - id
+    - name
+    - file_category_id
+    - created
+fields:
+    - name
+    - file_category_id
+belongsTo:
+    ParentFileCategory:
+        model: FileCategory
+        foreign_key: file_category_id
+        options: {}
+hasMany: {}
+habtm: {}

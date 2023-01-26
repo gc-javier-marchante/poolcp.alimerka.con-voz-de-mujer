@@ -1,0 +1,51 @@
+validation:
+    user_id:
+        - id
+        - required
+        - notempty
+    ip:
+        - required
+        - notempty
+    user_agent:
+        - required
+        - notempty
+validOrderByExpressions:
+    - id
+    - user_id
+    - ip
+    - user_agent
+    - created
+    - created_by_user_id
+    - modified
+    - modified_by_user_id
+filter:
+    simple:
+        - id
+        - user_id
+        - ip
+        - user_agent
+    advanced:
+        - id
+        - user_id
+        - ip
+        - user_agent
+        - created
+displayFields:
+    - id
+listFields:
+    - id
+    - user_id
+    - ip
+    - user_agent
+    - created
+fields:
+    - user_id
+    - ip
+    - user_agent
+belongsTo:
+    User:
+        model: User
+        foreign_key: user_id
+        options: {}
+hasMany: {}
+habtm: {}

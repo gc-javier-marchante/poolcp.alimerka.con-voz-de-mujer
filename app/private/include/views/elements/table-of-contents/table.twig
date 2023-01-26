@@ -1,0 +1,31 @@
+<div class="post fs-6 d-flex flex-column-fluid">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-3">
+				<div class="card mb-6 mb-xl-9" data-kt-sticky="true" data-kt-sticky-name="account-settings" data-kt-sticky-offset="{default: false, lg: 300}" data-kt-sticky-width="{lg: '250px', xxl: '275px'}" data-kt-sticky-left="auto" data-kt-sticky-top="100px" data-kt-sticky-zindex="95">
+					<div class="card-body py-5 ps-3 pe-6">
+						<ul class="nav nav-flush menu menu-column menu-rounded menu-title-gray-600 menu-bullet-gray-300 menu-state-bg menu-state-bullet-primary fw-bold fs-6 mb-2">
+							{% for content in contents %}
+								<li class="menu-item p-0">
+									<a href="#{{ content.hash }}" class="menu-link px-3 nav-link">
+										<span class="menu-bullet">
+											<span class="bullet bullet-vertical"></span>
+										</span>
+										<span class="menu-title">{{ content.title }}</span>
+									</a>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-9">
+				{% for content in contents %}
+					<div class="card mb-6 mb-xl-9" id="{{ content.hash }}">
+						{% include content.view ~ '.twig' %}
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>

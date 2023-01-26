@@ -1,0 +1,47 @@
+validation:
+    user_id:
+        - id
+        - required
+        - notempty
+    prefix:
+        - required
+        - notempty
+    token:
+        - required
+        - notempty
+validOrderByExpressions:
+    - id
+    - user_id
+    - prefix
+    - token
+    - created
+    - created_by_user_id
+    - modified
+    - modified_by_user_id
+filter:
+    simple:
+        - id
+        - prefix
+    advanced:
+        - id
+        - user_id
+        - prefix
+        - created
+displayFields:
+    - id
+listFields:
+    - id
+    - user_id
+    - prefix
+    - created
+fields:
+    - user_id
+    - prefix
+    - token
+belongsTo:
+    User:
+        model: User
+        foreign_key: user_id
+        options: {}
+hasMany: {}
+habtm: {}

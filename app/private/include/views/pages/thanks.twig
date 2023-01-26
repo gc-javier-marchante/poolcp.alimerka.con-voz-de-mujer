@@ -1,0 +1,34 @@
+<div class="scroll-anchor" id="home"></div>
+<section class="bg-cover bg-image-navidad bg-top bg-light-grey d-flex align-items-top mb-3">
+	<div class="container">
+		<div class="row g-0">
+			<div class="col-12 order-2 col-lg-6 order-lg-1 align-self-end">
+				<img src="{{ root }}static/img/chefs-silu.png" class="w-100" alt="Pepe Rodríguez y Nacho Manzano">
+			</div>
+			<div class="col-12 order-1 col-lg-6 order-lg-2 text-end">
+				<div class="jumbotron bg-transparent mb-0">
+					{% if confirmed %}
+						{% include 'elements/header-confirmation.twig' %}
+					{% elseif completed and winner %}
+						{% include 'elements/header-winner.twig' %}
+					{% elseif completed %}
+						{% include 'elements/header-loser.twig' %}
+					{% else %}
+						{% include 'elements/header-form.twig' %}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="scroll-anchor" id="how"></div>
+<section class="mb-5">
+	{% include 'elements/how.twig' %}
+</section>
+
+
+<div class="scroll-anchor" id="contact"></div>
+<section class="mb-5">
+	{% include 'elements/contact.twig' %}
+</section>

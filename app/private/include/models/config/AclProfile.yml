@@ -1,0 +1,45 @@
+validation:
+    name:
+        - required
+        - notempty
+        - unique
+    is_full_access:
+        - tinyint
+validOrderByExpressions:
+    - id
+    - name
+    - description
+    - is_full_access
+    - created
+    - created_by_user_id
+    - modified
+    - modified_by_user_id
+filter:
+    simple:
+        - id
+        - name
+    advanced:
+        - id
+        - name
+        - is_full_access
+        - created
+displayFields:
+    - name
+listFields:
+    - id
+    - name
+fields:
+    - name
+    - description
+    - is_full_access
+belongsTo: {}
+habtm:
+    AclPermission:
+        model: AclPermission
+        association_model: AclProfilePermission
+        foreign_key: acl_profile_id
+        association_foreign_key: acl_permission_id
+hasMany:
+    User:
+        model: User
+        foreign_key: acl_profile_id

@@ -1,0 +1,14 @@
+AdminUsers: User
+Seo: CanonicalUrl
+Texts: LayoutText
+"*": True
+"!":
+  - AclCacheUserPermission
+  - AclProfilePermission
+  - ContentType
+  - DbMigration
+  - Log
+  - QueuedTask
+  - UserPasswordHistory
+  - UserTfaToken
+  - Webhook

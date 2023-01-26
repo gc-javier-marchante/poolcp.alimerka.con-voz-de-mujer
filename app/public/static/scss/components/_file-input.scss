@@ -1,0 +1,97 @@
+// Base
+.file-input {
+	position: relative;
+	display: inline-block;
+	@include border-radius($border-radius);
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	// Empty state
+	&:not(.file-input-empty) {
+		background: none !important;
+	}
+
+	// Wrapper
+	.file-input-wrapper {
+		@include border-radius($border-radius);
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	// Change Button
+	[data-kt-file-input-action="change"] {
+		cursor: pointer;
+		position: absolute;
+		right: -10px;
+		top: -10px;
+
+		input {
+			width: 0 !important;
+			height: 0 !important;
+			overflow: hidden;
+			opacity: 0;
+		}
+	}
+
+	// Cancel & Remove Buttons
+	[data-kt-file-input-action="cancel"],
+	[data-kt-file-input-action="remove"] {
+		position: absolute;
+		right: -10px;
+		bottom: -5px;
+	}
+
+	[data-kt-file-input-action="cancel"] {
+		display: none;
+	}
+
+	// Input Changed State
+	&.file-input-changed {
+		[data-kt-file-input-action="cancel"] {
+			display: flex;
+		}
+
+		[data-kt-file-input-action="remove"] {
+			display: none;
+		}
+	}
+
+	// Input Empty State
+	&.file-input-empty {
+		[data-kt-file-input-action="remove"],
+		[data-kt-file-input-action="cancel"] {
+			display: none;
+		}
+	}
+
+	// Circle style
+	&.file-input-circle {
+		border-radius: 50%;
+
+		// Wrapper
+		.file-input-wrapper {
+			border-radius: 50%;
+		}
+
+		// Change Control
+		[data-action="change"] {
+			right: 5px;
+			top: 5px;
+		}
+
+		// Cancel & Remove Buttons
+		[data-action="cancel"],
+		[data-action="remove"] {
+			right: 5px;
+			bottom: 5px;
+		}
+	}
+
+	// Bordered style
+	&.file-input-outline {
+		.file-input-wrapper {
+			border: 3px solid $white;
+			box-shadow: $box-shadow;
+		}
+	}
+}

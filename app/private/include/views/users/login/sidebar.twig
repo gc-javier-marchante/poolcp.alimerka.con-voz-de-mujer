@@ -1,0 +1,10 @@
+<div class="d-flex flex-column flex-lg-row-auto bg-primary w-xl-600px">
+	<div class="d-flex flex-column text-center p-10 pt-lg-20">
+		<a href="{{ localed_root }}" class="py-9 pt-lg-20">
+			<img alt="Logo" src="{{ root }}static/img/logos/logo-white.svg" class="h-70px"/>
+		</a>
+		<h1 class="fw-bolder text-white fs-2qx pb-5 pb-md-10">{{ i18n__('Welcome to %s') | format(website_name) }}</h1>
+		<p class="fw-bold fs-2 text-white">{{ presentation }}</p>
+	</div>
+	<div class="d-flex flex-row-fluid bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-size-lg-auto bgi-position-y-bottom min-h-100px min-h-lg-350px" style="background-image: url({{ root }}static/img/svg/illustrations/statistics.svg)"></div>
+</div>

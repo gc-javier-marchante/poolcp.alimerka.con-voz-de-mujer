@@ -1,0 +1,17 @@
+/.idea
+/app/private/.logs/
+/app/private/.cache/
+/app/private/.tmp/
+/app/private/include/models/structure/
+/app/public/content/files/
+/app/public/content/img/
+/vendor/
+/app/public/adminer.php
+TestController.php
+sample-commands.txt
+/environment
+__VERSION
+auth*.json
+/content
+/static
+/adminer.php

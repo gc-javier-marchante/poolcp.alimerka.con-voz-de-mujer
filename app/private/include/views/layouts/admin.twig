@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>{{ seo_title ?: website_name }}</title>
+		{% if seo_description %}
+			<meta name="description" content="{{ seo_description }}"/>
+		{% endif %}
+		<meta property="og:site_name" content="{{ website_name }}"/>
+		<meta property="og:title" content="{{ seo_title ?: website_name }}"/>
+		<meta property="og:type" content="website"/>
+		<meta property="og:url" content="{{ canonical_url }}"/>
+		{% if seo_description %}
+			<meta property="og:description" content="{{ seo_description }}"/>
+		{% endif %}
+		{% if og_image %}
+			<meta property="og:image" content="{{ og_image }}"/>
+		{% endif %}
+		{% if og_image_width %}
+			<meta property="og:image:width" content="{{ og_image_width }}"/>
+		{% endif %}
+		{% if og_image_height %}
+			<meta property="og:image:height" content="{{ og_image_height }}"/>
+		{% endif %}
+		{% if canonical_url %}
+			<link rel="canonical" href="{{ canonical_url }}"/>
+		{% endif %}
+		{{ html_helper_css('https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700')| raw }}
+		{{ html_helper_css('https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700')| raw }}
+		{{ html_helper_css('plugins.css') | raw }}
+		{{ html_helper_css('style.css') | raw }}
+		<link rel="icon" href="{{ root }}static/img/logos/favicon.ico">
+	</head>
+	<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled aside-fixed aside-default-enabled">
+		<div class="d-flex flex-column flex-root">
+			<div class="page d-flex flex-row flex-column-fluid">
+				<div id="kt_aside" class="aside aside-default bg-white aside-hoverable" data-kt-drawer="true" data-kt-drawer-name="aside" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'200px', '300px': '250px'}" data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_aside_toggle">
+					<div class="aside-logo flex-column-auto pt-9 pb-5" id="kt_aside_logo">
+						<a href="{{ localed_root }}">
+							<img alt="Logo" src="{{ root }}static/img/logos/logo-default.svg" class="max-h-50px logo-default"/>
+							<img alt="Logo" src="{{ root }}static/img/logos/logo-minimize.svg" class="max-h-50px logo-minimize"/>
+						</a>
+					</div>
+					<div class="aside-menu flex-column-fluid">
+						{% include 'layouts/admin/menu.twig' %}
+					</div>
+					<div class="aside-footer flex-column-auto" id="kt_aside_footer"></div>
+				</div>
+				<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+					<div id="kt_header" class="header" data-kt-sticky="true" data-kt-sticky-name="header" data-kt-sticky-offset="{default: '200px', lg: '300px'}">
+						<div class="container-fluid d-flex align-items-stretch justify-content-between">
+							<div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
+								<a href="{{ localed_root }}" class="d-lg-none">
+									<img alt="Logo" src="{{ root }}static/img/logos/logo-compact.svg" class="mh-40px"/>
+								</a>
+								<div class="btn btn-icon w-auto ps-0 btn-active-color-primary d-none d-lg-inline-flex me-2 me-lg-5" data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body" data-kt-toggle-name="aside-minimize">
+									<span class="svg-icon svg-icon-2 rotate-180">
+										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewbox="0 0 24 24" version="1.1">
+											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+												<polygon points="0 0 24 0 24 24 0 24"/>
+												<rect fill="#000000" opacity="0.5" transform="translate(14.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-14.000000, -12.000000)" x="13" y="5" width="2" height="14" rx="1"/>
+												<rect fill="#000000" opacity="0.5" x="3" y="3" width="2" height="18" rx="1"/>
+												<path d="M5.7071045,15.7071045 C5.3165802,16.0976288 4.68341522,16.0976288 4.29289093,15.7071045 C3.90236664,15.3165802 3.90236664,14.6834152 4.29289093,14.2928909 L10.2928909,8.29289093 C10.6714699,7.914312 11.2810563,7.90106637 11.6757223,8.26284357 L17.6757223,13.7628436 C18.0828413,14.136036 18.1103443,14.7686034 17.7371519,15.1757223 C17.3639594,15.5828413 16.7313921,15.6103443 16.3242731,15.2371519 L11.0300735,10.3841355 L5.7071045,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(11.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-11.000001, -11.999997)"/>
+											</g>
+										</svg>
+									</span>
+								</div>
+							</div>
+							<div class="d-flex align-items-stretch justify-content-between">
+								<div class="d-flex align-items-stretch flex-shrink-0">
+									{% if show_user_notifications %}
+										{% include 'layouts/admin/user-notifications.twig' %}
+									{% endif %}
+									{% include 'layouts/admin/user-menu.twig' %}
+									<div class="d-flex align-items-center d-lg-none ms-1 ms-lg-3">
+										<div class="btn btn-icon btn-active-light-primary w-40px h-40px" id="kt_aside_toggle">
+											<span class="svg-icon svg-icon-2x">
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewbox="0 0 24 24" version="1.1">
+													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+														<rect x="0" y="0" width="24" height="24"/>
+														<rect fill="#000000" x="4" y="5" width="16" height="3" rx="1.5"/>
+														<path d="M5.5,15 L18.5,15 C19.3284271,15 20,15.6715729 20,16.5 C20,17.3284271 19.3284271,18 18.5,18 L5.5,18 C4.67157288,18 4,17.3284271 4,16.5 C4,15.6715729 4.67157288,15 5.5,15 Z M5.5,10 L18.5,10 C19.3284271,10 20,10.6715729 20,11.5 C20,12.3284271 19.3284271,13 18.5,13 L5.5,13 C4.67157288,13 4,12.3284271 4,11.5 C4,10.6715729 4.67157288,10 5.5,10 Z" fill="#000000" opacity="0.3"/>
+													</g>
+												</svg>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="content fs-6 d-flex flex-column flex-column-fluid" id="kt_content">
+						{% include 'layouts/admin/breadcrumbs-actions.twig' %}
+						{{ content_for_layout | raw}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+			<span class="svg-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewbox="0 0 24 24" version="1.1">
+					<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+						<polygon points="0 0 24 0 24 24 0 24"/>
+						<rect fill="#000000" opacity="0.5" x="11" y="10" width="2" height="10" rx="1"/>
+						<path d="M6.70710678,12.7071068 C6.31658249,13.0976311 5.68341751,13.0976311 5.29289322,12.7071068 C4.90236893,12.3165825 4.90236893,11.6834175 5.29289322,11.2928932 L11.2928932,5.29289322 C11.6714722,4.91431428 12.2810586,4.90106866 12.6757246,5.26284586 L18.6757246,10.7628459 C19.0828436,11.1360383 19.1103465,11.7686056 18.7371541,12.1757246 C18.3639617,12.5828436 17.7313944,12.6103465 17.3242754,12.2371541 L12.0300757,7.38413782 L6.70710678,12.7071068 Z" fill="#000000" fill-rule="nonzero"/>
+					</g>
+				</svg>
+			</span>
+		</div>
+		<script>
+			window.gcPaths = {{ {LOCALED_ROOT_URL: localed_root, ROOT_URL: root } | json_encode | raw }}
+		</script>
+		{{ html_helper_js('plugins.js') | raw }}
+		{{ html_helper_js('jquery.dataTables.min.js') | raw }}
+		{{ html_helper_js('vendors/plugins/datatables.init.js') | raw }}
+		{{ html_helper_js('components.js') | raw }}
+		{{ html_helper_js('admin.js') | raw }}
+		{{ html_helper_js('::end') | raw }}
+	</body>
+</html>

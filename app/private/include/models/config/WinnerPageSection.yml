@@ -1,0 +1,33 @@
+validation:
+    name:
+        - required
+        - notempty
+    is_full_width:
+        - tinyint
+validOrderByExpressions:
+    - id
+    - name
+    - content
+    - is_full_width
+    - created
+    - created_by_user_id
+    - modified
+    - modified_by_user_id
+filter:
+    simple:
+        - id
+        - name
+displayFields:
+    - name
+listFields:
+    - id
+    - name
+    - is_full_width
+    - created
+fields:
+    - name
+    - content
+    - is_full_width
+belongsTo: {}
+hasMany: {}
+habtm: {}

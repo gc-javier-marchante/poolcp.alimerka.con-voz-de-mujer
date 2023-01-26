@@ -1,0 +1,19 @@
+<div class="row mb-6 fv-row" {{ html_helper_generate_attr(field.formRowOptions) | raw }}>
+	<label class="col-lg-4 col-form-label {% if field.required %}required{% endif %} fw-bold fs-6">{{ field.label }}</label>
+	<div class="col-lg-8">
+		{% set config = {class: 'form-control form-control-lg form-control-solid mb-3 mb-lg-0', autocomplete: 'off'} %}
+		{% if field.max_length %}
+			{% set config = config|merge({max_length: field.max_length}) %}
+		{% endif %}
+		{% if field.step %}
+			{% set config = config|merge({step: field.step}) %}
+		{% endif %}
+		{% if field.required %}
+			{% set config = config|merge({required: field.required}) %}
+		{% endif %}
+		{% if field.options %}
+			{% set config = config|merge(field.options) %}
+		{% endif %}
+		{{ form_helper_input(field.name, field.type, false, config) | raw }}
+	</div>
+</div>

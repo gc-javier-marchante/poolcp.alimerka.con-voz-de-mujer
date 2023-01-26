@@ -1,0 +1,42 @@
+HTTP_HOST: "localhost:31514"
+HTTPS: False
+FORCE_HTTPS: False
+MYSQL_TABLE_PREFIX: "navidad2022_"
+MYSQL_SERVER: localhost
+MYSQL_USER: root
+MYSQL_PASSWORD: root
+MYSQL_DATABASE: poolcp.alimerka.con-voz-de-mujer
+MYSQL_PORT: ""
+MYSQL_SOCKET: ""
+MYSQL_COLLATION: "utf8mb4_general_ci"
+SESSION_DIGEST_TOKEN: 5SurgMRPjcTcaX1kmqwha6BRwtjEL3ZCJotLVQIIYeaqxB2QB
+FORM_HELPER_TOKEN: hDEIPaIJBMEvUgcNiXSNG69CpXpPEOB233QT1Uscn
+MYSQL_LOG_ALL_QUERIES_ON_DEBUG: true
+NO_SESSION_HOST_NAME: false
+SMTP_MAIL_FUNCTION: false
+SMTP_PASSWORD: ""
+SMTP_HOST: "smtp.eu.mailgun.org"
+SMTP_USER: "promociones@35aniversarioalimerka.es"
+SMTP_PORT: 465
+SMTP_SSL: true
+SMTP_TIMEOUT: 30
+SMTP_EMAIL: "promociones@35aniversarioalimerka.es"
+SMTP_DISPLAY: "Alimerka, Showcooking Navidad"
+GESTYMVC_DEBUG: false
+WEBSITE_NAME: "Showcooking Navidad | Alimerka"
+USER_DIGEST_TOKEN: BN9ORaD8ii5IFZnyzl8oXQJU2cAjnJAOBAY8Blfk3B
+STATIC_VERSION: 1
+SEND_EMAIL_TO_FAKE_RECIPIENT:
+  - "devnotifications@gestycontrol.com"
+  - "javier.marchante@gestycontrol.com"
+SEND_ERROR_LOGS_TO_RECIPIENT:
+  - "devnotifications@gestycontrol.com"
+PREFIX_EMAIL_SUBJECTS: True
+AMAZON_S3_BUCKET: ""
+AMAZON_S3_REGION: ""
+AMAZON_S3_KEY: ""
+AMAZON_S3_SECRET: ""
+STORAGE_FILE_VIEW_TOKEN: "RQ4IfQ8SvPzUVEJlJDWix2lSKmTJAemy3dktLO31Nu9"
+STORAGE_PICTURE_VIEW_TOKEN: "G3kSkIz0nA7iRWfHgFEwuyTCcGTYmHqZx7h1fybPWjLX56XPf"
+CRON_SCHEDULE_QUEUED_TASKS: "* * * * *"
+CRON_SCHEDULE_CHECK_ERROR_LOGS: "0 * * * *"

@@ -1,0 +1,35 @@
+validation:
+    code:
+        - required
+        - notempty
+validOrderByExpressions:
+    - id
+    - gestymvc_request_identifier
+    - code
+    - created
+    - created_by_user_id
+    - modified
+    - modified_by_user_id
+filter:
+    simple:
+        - id
+        - gestymvc_request_identifier
+        - code
+    advanced:
+        - id
+        - gestymvc_request_identifier
+        - code
+        - created
+displayFields:
+    - id
+listFields:
+    - id
+    - gestymvc_request_identifier
+    - code
+    - created
+fields:
+    - gestymvc_request_identifier
+    - code
+belongsTo: {}
+hasMany: {}
+habtm: {}

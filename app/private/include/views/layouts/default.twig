@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="{{ constant('LANG') }}">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PMMZ3T4');</script>
+    <!-- End Google Tag Manager -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>{{ seo_title ?: website_name }}</title>
+    {% if seo_description %}
+    <meta name="description" content="{{ seo_description }}" />{% endif %}
+    <meta property="og:site_name" content="{{ website_name }}" />
+    <meta property="og:title" content="{{ seo_title }}" />
+    <meta property="og:type" content="website" />
+    {% if seo_description %}
+    <meta property="og:description" content="{{ seo_description }}" />{% endif %}
+    {% if og_image %}
+    <meta property="og:image" content="{{ og_image }}" />{% endif %}
+    {% if og_image_width %}
+    <meta property="og:image:width" content="{{ og_image_width }}" />{% endif %}
+    {% if og_image_height %}
+    <meta property="og:image:height" content="{{ og_image_height }}" />{% endif %}
+    {% if canonical_url %}
+    <link rel="canonical" href="{{ canonical_url }}" />{% endif %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    {{ html_helper_css('app.css')|raw }}
+</head>
+
+<body class="{% if fixed_header %}with-fixed-navbar{% endif %}">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMMZ3T4" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    {% if load_recaptcha %}
+    <script data-cookie-run="insertRecaptchaScript()">
+        function insertRecaptchaScript() {
+            let recaptchajs = document.createElement('script'); recaptchajs.type = 'text/javascript'; recaptchajs.async = true;
+            recaptchajs.src = 'https://www.google.com/recaptcha/api.js';
+            let link = document.getElementsByTagName('link')[0]; link.parentNode.insertBefore(recaptchajs, link);
+        }
+    </script>
+    {% endif %}
+    <header id="header" class="bg-yellow main-gradient {% if fixed_header %}fixed-top{% endif %}">
+        <nav class="navbar navbar-expand-lg navbar-light container">
+            <a class="navbar-brand" href="{{ router_url({controller: 'Pages', action: 'index'}) }}#home">
+                <img src="{{ root }}static/img/navbar-brand.svg" alt="Logo Alimerka">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse text-end" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item me-md-3">
+                        <a class="nav-link {% if menu_active %}active{% endif %}"
+                            href="{{ router_url({controller: 'Pages', action: 'index'}) }}#how"><strong>Cómo participar</strong>
+                        </a>
+                    </li>
+                    <li class="nav-item ms-md-3 me-md-3">
+                        <a class="nav-link {% if menu_active %}active{% endif %}"
+                            href="{{ router_url({controller: 'Pages', action: 'index'}) }}#product"><strong>Menú de Navidad</strong>
+                        </a>
+                    </li>
+                    <li class="nav-item ms-md-3 me-md-3">
+                        <a class="nav-link {% if menu_active %}active{% endif %}"
+                            href="{{ router_url({controller: 'Pages', action: 'index'}) }}#chef"><strong>Pepe Rodríguez y Nacho Manzano</strong>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    {{ content_for_layout | raw }}
+
+    <footer class="bg-yellow main-gradient py-3">
+        <div class="container-lg">
+            <ul class="list-unstyled justify-content-between align-items-center text-center d-md-flex">
+                <li class="d-block d-lg-inline">
+                    <a class="pe-2 py-1 text-black poppins-bold line-height-low"
+                        href="{{ router_url({controller: 'Pages', action: 'termsConditions'}) }}">
+                        Términos y condiciones
+                    </a>
+                </li>
+                <li class="d-none d-lg-inline">|</li>
+                <li class="d-block d-lg-inline">
+                    <a class="px-2 py-1 text-black poppins-bold line-height-low"
+                        href="{{ router_url({controller: 'Pages', action: 'privacyPolicy'}) }}">
+                        Política de Privacidad
+                    </a>
+                </li>
+                <li class="d-none d-lg-inline">|</li>
+                <li class="d-block d-lg-inline">
+                    <a class="px-2 py-1 text-black poppins-bold line-height-low"
+                        href="{{ router_url({controller: 'Pages', action: 'cookiePolicy'}) }}">
+                        Política de cookies
+                    </a>
+                </li>
+                <li class="d-none d-lg-inline">|</li>
+                <li class="d-block d-lg-inline">
+                    <a class="px-2 py-1 text-black poppins-bold line-height-low"
+                        href="{{ router_url({controller: 'Pages', action: 'legalNotice'}) }}">
+                        Aviso Legal
+                    </a>
+                </li>
+                <li class="d-none d-lg-inline">|</li>
+                <li class="d-block d-lg-inline">
+                    <a class="ps-2 py-1 text-black poppins-bold line-height-low"
+                        href="{{ router_url({controller: 'Pages', action: 'faq'}) }}">
+                        Preguntas frecuentes
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    {% if show_cookie_alert %}
+    <section class="fixed-bottom bg-black" data-cookie-banner>
+        <div class="container">
+            <div class="d-flex align-items-center py-3">
+                <div class="text-yellow">
+                    Como la mayoría de sitios web, usamos cookies para mejorar la experiencia de usuario.
+                    El uso de este sitio web requiere la aceptación del uso de estas cookies según nuestra
+                    <a class="text-underline text-yellow"
+                        href="{{ router_url({controller: 'Pages', action: 'cookiePolicy'}) }}">política de cookies</a>.
+                </div>
+                <div class="ms-2">
+                    <a class="btn btn-yellow" href="#" data-cookie-accept>
+                        Acepto
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div data-cookie-banner>
+        <!--placeholder for scrolling-->
+        <span style="height: 14rem;" class="bg-yellow d-block d-sm-none"></span>
+        <span style="height: 8rem;" class="bg-yellow d-none d-sm-block d-md-none"></span>
+        <span style="height: 6.5rem;" class="d-none d-md-block d-lg-none"></span>
+        <span style="height: 5rem;" class="d-none d-lg-block"></span>
+    </div>
+    {% endif %}
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <script>
+        window.LANG = {{ constant('LANG') | json_encode | raw }};
+        window.ROOT_URL = {{ constant('ROOT_URL') | json_encode | raw }};
+        window.LOCALED_ROOT_URL = {{ constant('LOCALED_ROOT_URL') | json_encode | raw }};
+    </script>
+    {{ html_helper_js('app.js')|raw }}
+</body>
+
+</html>

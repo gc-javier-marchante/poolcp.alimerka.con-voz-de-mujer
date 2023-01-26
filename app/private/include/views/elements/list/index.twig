@@ -1,0 +1,45 @@
+<div class="{% if not is_modal %}container{% endif %}">
+	{% include 'elements/list/search.twig' with (search ?: {}) %}
+	<div class="d-flex flex-wrap flex-stack pb-7">
+		<div class="d-flex flex-wrap align-items-center my-1">
+			<h2 class="fw-bold me-5 my-1">
+				{% if simple or advanced %}
+					{{ i18n__('%s Items Found') | format(pagination.count) }}
+				{% else %}
+					{{ i18n__('%s Items') | format(pagination.count) }}
+				{% endif %}
+			</h2>
+		</div>
+		{% if not is_modal and can_export %}
+			<div class="d-flex flex-wrap my-1 min-w-150px">
+				<div class="d-flex my-0 w-100">
+					<select name="export" data-control="select2" data-hide-search="true" class="form-select form-select-white form-select-sm" data-action-selection>
+						<option value="">{{ i18n__('Export') }}</option>
+						<option value="excel" data-export-table="#list-table-{{ random_key }}">{{ i18n__('Excel (current page)') }}</option>
+						<option value="excel-full" data-redirect="{{ router_url({action: 'index', '?': (request_get(null) | merge({excel: 1})) }) }}">{{ i18n__('Excel (full result)') }}</option>
+					</select>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+	<div class="card card-flush mb-6 mb-xl-9">
+		<div class="card-body pt-0 pb-0 {% if is_modal %}p-0{% endif %}">
+			<div class="table-responsive" id="list-table-{{ random_key }}" {% if list.download_name %} data-download-name="{{ list.download_name }}" {% endif %}>
+				{% include 'elements/list/table.twig' with list %}
+			</div>
+		</div>
+	</div>
+	{% if list_index_pagination_prefix_view %}
+		{% include list_index_pagination_prefix_view ~ '.twig' %}
+	{% endif %}
+
+	{% if invoice_view %}
+		{% include invoice_view ~ '.twig' %}
+	{% endif %}
+
+	{{ paginator_helper_links(pagination) | raw }}
+
+	{% if list_index_pagination_suffix_view %}
+		{% include list_index_pagination_suffix_view ~ '.twig' %}
+	{% endif %}
+</div>

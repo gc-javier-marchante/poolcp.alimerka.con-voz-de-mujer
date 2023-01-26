@@ -1,0 +1,11 @@
+<tr class="{{ tr.class }}">
+	{% for header in tr.ths %}
+		<th {% if not download_mode %} class="text-gray-800 {{ header.class }}" colspan="{{ header.colspan ?: 1 }}" {% endif %}>
+			{% if header.order and not download_mode %}
+				{{ paginator_helper_reorder(pagination, header.text, header.order, true, {'class': 'text-gray-800'}) | raw }}
+			{% else %}
+				{{ header.text }}
+			{% endif %}
+		</th>
+	{% endfor %}
+</tr>

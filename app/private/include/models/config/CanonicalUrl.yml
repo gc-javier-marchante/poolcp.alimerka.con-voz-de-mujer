@@ -1,0 +1,45 @@
+validation:
+    url:
+        - url
+        - required
+        - notempty
+        - unique
+    picture_id:
+        - id
+validOrderByExpressions:
+    - id
+    - url
+    - seo_title
+    - seo_description
+    - picture_id
+    - created
+    - created_by_user_id
+    - modified
+    - modified_by_user_id
+filter:
+    simple:
+        - id
+        - url
+    advanced:
+        - id
+        - url
+        - created
+displayFields:
+    - id
+listFields:
+    - id
+    - url
+    - picture_id
+    - seo_title
+fields:
+    - url
+    - seo_title
+    - seo_description
+    - picture_id
+belongsTo:
+    Picture:
+        model: Picture
+        foreign_key: picture_id
+        options: {}
+hasMany: {}
+habtm: {}

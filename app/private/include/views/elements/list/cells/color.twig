@@ -1,0 +1,4 @@
+{% set color_ = deep(element, td.text) %}
+{% if color_ %}
+	<div class="p-3" style="background-color: {{ color_ }}"></div>
+{% endif %}

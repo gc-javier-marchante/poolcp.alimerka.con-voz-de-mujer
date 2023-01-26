@@ -1,0 +1,24 @@
+{% if breadcrumbs %}
+	<div class="d-flex flex-column align-items-start justify-content-center flex-wrap me-2">
+		<h1 class="text-dark fw-bolder my-1 fs-2">{{ breadcrumbs.title }}</h1>
+		{% if readcrumbs.items or breadcrumbs.title_short %}
+			<ul class="breadcrumb fw-bold fs-base my-1">
+				<li class="breadcrumb-item text-muted">
+					<a href="{{ router_url({controller: 'Users', action: 'index'}) }}" class="text-muted text-hover-primary">{{ i18n__('Home') }}</a>
+				</li>
+				{% for breadcrumb in (breadcrumbs.items | reverse) %}
+					{% if breadcrumb.href %}
+						<li class="breadcrumb-item text-muted">
+							<a href="{{ router_url(breadcrumb.href) }}" class="text-muted text-hover-primary">{{ breadcrumb.title }}</a>
+						</li>
+					{% else %}
+						<li class="breadcrumb-item text-muted">{{ breadcrumb.title }}</li>
+					{% endif %}
+				{% endfor %}
+				{% if breadcrumbs.title_short %}
+					<li class="breadcrumb-item text-dark">{{ breadcrumbs.title_short }}</li>
+				{% endif %}
+			</ul>
+		{% endif %}
+	</div>
+{% endif %}

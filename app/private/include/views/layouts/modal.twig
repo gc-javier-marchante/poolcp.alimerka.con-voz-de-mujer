@@ -1,0 +1,22 @@
+<div class="modal {% if not request_get('__modal_postback') %}fade{% endif %}" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content">
+			<div class="modal-header flex-stack">
+				{% if breadcrumbs or actions %}
+					<div class="w-100 d-flex flex-stack flex-wrap flex-sm-nowrap">
+						{% include 'layouts/admin/breadcrumbs.twig' %}
+						{% include 'layouts/admin/actions.twig' %}
+					</div>
+				{% endif %}
+			</div>
+			<div class="modal-body scroll-y">
+				{{ content_for_layout | raw }}
+			</div>
+			{% if not hide_footer %}
+				<div class="modal-footer d-flex justify-content-end">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ i18n__('Close') }}</button>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+</div>

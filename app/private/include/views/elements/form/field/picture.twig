@@ -1,0 +1,7 @@
+<div class="row mb-6 fv-row" {{ html_helper_generate_attr(field.formRowOptions) | raw }}>
+	<label class="col-lg-4 col-form-label fw-bold fs-6">{{ field.label }}</label>
+	<div class="col-lg-8">
+		{% set picture_ = deep(_context, field.pictureInfo) %}
+		{% include 'elements/form/image-input.twig' with {name: field.name, readable: field.label, value: picture_.src ?: root ~ 'static/img/blank.png', default_value: root ~ 'static/img/blank.png'} %}
+	</div>
+</div>

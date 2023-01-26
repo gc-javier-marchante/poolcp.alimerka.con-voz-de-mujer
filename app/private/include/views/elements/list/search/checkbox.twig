@@ -1,0 +1,4 @@
+<div class="{{ searchFieldConfig.col ?: 'col-lg-4' }} mb-4">
+	<label class="fs-6 form-label fw-boldest text-dark">{{ searchFieldConfig.label }}</label>
+	{{ form_helper_input(search_field, 'checkbox', 1, {checked: (request_get(search_field) ? true : false), label: {content: searchFieldConfig.check_label ?: i18n__('Yes'), class: 'form-check-label', input: 'sibling'}, class: 'form-check-input', div: {class: 'form-check form-switch form-check-custom form-check-solid mt-1'}}) | raw  }}
+</div>

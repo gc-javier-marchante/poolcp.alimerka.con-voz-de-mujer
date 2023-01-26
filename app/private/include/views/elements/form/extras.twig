@@ -1,0 +1,6 @@
+{% if extras.separator and not view %}
+	<hr>
+{% endif %}
+{% if extras.title %}
+	<h2 class="mt-9 mb-5">{{ (extras.title starts with 'i18n#' ? i18n__(extras.title[5:]) : extras.title) }}</h2>
+{% endif %}

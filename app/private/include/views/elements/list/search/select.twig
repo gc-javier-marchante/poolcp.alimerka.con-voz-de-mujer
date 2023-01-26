@@ -1,0 +1,5 @@
+{% set config = {label: {content: searchFieldConfig.label, class: 'fs-6 form-label fw-boldest text-dark'}, class: 'form-select form-select-solid', 'data-control': 'select2', placeholder: i18n__('Select...'), div: {class: (searchFieldConfig.col ?: 'col-lg-4')  ~ ' mb-4'}} %}
+{% if searchFieldConfig.options %}
+	{% set config = config|merge(searchFieldConfig.options) %}
+{% endif %}
+{{ form_helper_select(search_field, (searchFieldSelectList[search_field] ? attribute(_context, searchFieldSelectList[search_field]) : searchFieldConfig.list.values), request_get(search_field), config) | raw  }}

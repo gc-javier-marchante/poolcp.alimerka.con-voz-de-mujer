@@ -1,0 +1,30 @@
+validation:
+    file:
+        - required
+        - notempty
+validOrderByExpressions:
+    - id
+    - file
+    - created
+    - created_by_user_id
+    - modified
+    - modified_by_user_id
+filter:
+    simple:
+        - id
+        - file
+    advanced:
+        - id
+        - file
+        - created
+displayFields:
+    - id
+listFields:
+    - id
+    - file
+    - created
+fields:
+    - file
+belongsTo: {}
+hasMany: {}
+habtm: {}

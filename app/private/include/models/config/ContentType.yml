@@ -1,0 +1,38 @@
+validation:
+    name:
+        - required
+        - notempty
+    alias:
+        - required
+        - notempty
+validOrderByExpressions:
+    - id
+    - name
+    - alias
+    - created
+    - created_by_user_id
+    - modified
+    - modified_by_user_id
+filter:
+    simple:
+        - id
+        - name
+        - alias
+    advanced:
+        - id
+        - name
+        - alias
+        - created
+displayFields:
+    - name
+listFields:
+    - id
+    - name
+    - alias
+    - created
+fields:
+    - name
+    - alias
+belongsTo: {}
+hasMany: {}
+habtm: {}

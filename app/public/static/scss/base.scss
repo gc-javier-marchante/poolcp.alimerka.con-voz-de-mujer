@@ -1,0 +1,172 @@
+@import "mixins.scss";
+@import "definitions.scss";
+
+@include broken-property(text, font-size, rem, 1, 5, 0.25);
+@include broken-property(w, width, "%", 0, 4, 25, 25);
+@include broken-property(h, height, "%", 0, 4, 25, 25);
+
+@for $i from 2 through 5 {
+    @include border($i);
+}
+
+@include btn-size(xl, 1.5rem);
+@include btn-size(x2l, 2rem);
+@include btn-padding(lg, 1rem);
+@include btn-padding(xl, 1.5rem);
+@include btn-padding(x2l, 2rem);
+
+@include text-family("Gotham", sans-serif);
+@include text-family("GothamBook", sans-serif);
+@include text-family("GothamBold", sans-serif);
+@include text-family("GothamBlack", sans-serif);
+@include text-family("Poppins", sans-serif);
+@include text-family("PoppinsSemibold", sans-serif);
+@include text-family("PoppinsBold", sans-serif);
+
+
+@include bg-size(cover);
+@include bg-position(top);
+@include bg-position(bottom);
+@include bg-position(left);
+@include bg-position(right);
+@include bg-image(main);
+@include bg-image(services);
+@include bg-image(mission);
+@include bg-image(contact);
+@include bg-image(navidad);
+@include bg-image(pescaderia);
+@include bg-image(chef);
+
+@include bg-color("yellow", $color_yellow);
+@include bg-color("green", $color_green);
+@include bg-color("light-grey", $color_light_grey);
+@include bg-color("white", $color_white);
+@include bg-color("black", $color_black);
+@include bg-color("black-opacity", $color_black_opacity);
+@include border-color("yellow", $color_yellow);
+@include border-color("green", $color_green);
+@include border-color("light-grey", $color_light_grey);
+@include border-color("white", $color_white);
+@include border-color("black", $color_black);
+
+@include text-color("yellow", $color_yellow);
+@include text-color("green", $color_green);
+@include text-color("light-grey", $color_light_grey);
+@include text-color("black", $color_black);
+
+@include btn-color("yellow", $color_yellow, $color_white, $color_black, -$shadow_position);
+@include btn-color("green", $color_green, $color_white, $color_black, $shadow_position);
+@include btn-color("yellow", $color_yellow, $color_black, $color_white, -$shadow_position);
+@include btn-color("white", $color_white, $color_black, $color_green, $shadow_position);
+@include btn-color("black", $color_black, $color_white, $color_green, $shadow_position);
+
+.semicircle-lg {
+    height: 1rem;
+    width: 2rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+.ico-xl {
+    height: 8rem;
+}
+.ico-lg {
+    height: 5rem;
+}
+.ico {
+    height: 3rem;
+}
+.ico-md {
+    height: 2rem;
+}
+.ico-sm {
+    height: 1rem;
+}
+
+@include box-shadow(box-shadow, $shadow_position, $color_black);
+
+.display-md-4 {
+    @include break(md) {
+        font-size: 3.5rem;
+        font-weight: 300;
+        line-height: 1.2;
+    }
+}
+
+.btn {
+    border-radius:0rem;
+}
+
+.form-control {
+    border-radius: 0;
+    border: none;
+}
+
+[data-cookie-hint] {
+    position: relative;
+    cursor: pointer;
+    pointer-events: none;
+
+    > * {
+        filter: blur(5px);
+    }
+
+    &::after {
+        content: "No disponible sin aceptar el uso de cookies";
+        position: absolute;
+        top: 30%;
+        left: 10%;
+        width: 80%;
+        text-align: center;
+        text-shadow: 1px 1px black;
+        color: white;
+        font-weight: bold;
+    }
+}
+
+.image-placeholder {
+    display: inline-block;
+    height: 200px;
+    width: 100%;
+    background: #ccc;
+}
+
+.image-offboxt {
+    margin-top: -3rem;
+}
+
+.round-end {
+    border-top-right-radius: 6.25rem;
+    border-bottom-right-radius: 6.25rem;
+}
+
+img {
+    height: auto;
+}
+
+@include broken(img, containh) {
+    display: block;
+    height: 100%;
+    min-height: 10rem;
+    width: auto !important;
+    object-fit: contain;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+}
+
+@include broken(text, underline) {
+    text-decoration: underline;
+}
+
+.degrada {
+    background: -webkit-gradient(left top, right top, text-stop(0%, #5abafa), text-stop(100%, #558bff));
+    /*
+    background: #5abafa;
+    background: -moz-linear-gradient(left, #5abafa 0%, #558bff 100%);
+    background: -webkit-linear-gradient(left, #5abafa 0%, #558bff 100%);
+    background: -o-linear-gradient(left, #5abafa 0%, #558bff 100%);
+    background: -ms-linear-gradient(left, #5abafa 0%, #558bff 100%);
+    background: linear-gradient(to right, #5abafa 0%, #558bff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5abafa', endColorstr='#558bff', GradientType=1 );
+    */
+}

@@ -1,0 +1,69 @@
+{% include 'elements/header-title.twig' %}
+
+<div class="text-shadow text-white">
+	<h4 class="my-2 my-md-4">
+		Por favor, completa el siguiente formulario:
+	</h4>
+	<p class="mb-0 mb-md-3">
+		(*) Campos obligatorios
+	</p>
+	{{ form_helper_open() |raw }}
+	<div class="text-start">
+		{{ html_helper_flash_message({container: {class: 'alert alert-danger'}})| raw }}
+		<div class="row">
+			<div class="col-12">
+				{{ form_helper_input('participant[Participant][name]', 'text', false, {class: 'form-control dark bg-black-opacity text-white border border-white mt-1 text-uppercase', required: null, placeholder: 'Nombre y apellidos*'})|raw }}
+			</div>
+			<div class="col-md-6">
+				{{ form_helper_input('participant[Participant][email]', 'email', false, {class: 'form-control form-control-dark bg-black-opacity text-white border border-white mt-1 text-uppercase', required: null, placeholder: 'E-mail*'})|raw }}
+			</div>
+			<div class="col-md-6">
+				{{ form_helper_input('participant[Participant][telephone]', 'number', false, {min: 600000000, max: 999999999, class: 'form-control form-control-dark bg-black-opacity text-white border border-white mt-1 text-uppercase', required: null, placeholder: 'Teléfono*'})|raw }}
+			</div>
+			{# Dejo comentadas estas líenas por si en una futura campaña hacen falta el resto de campos en el formulario #}
+			{# <div class="col-md-12"> #}
+			{# {{ form_helper_input('participant[Participant][address]', 'text', false, {class: 'form-control border border-black mt-1 text-uppercase', required: null, placeholder: 'Dirección*'})|raw }} #}
+			{# </div> #}
+			{# <div class="col-sm-6 col-lg-4"> #}
+			{# {{ form_helper_input('participant[Participant][city]', 'text', false, {class: 'form-control border border-black mt-1 text-uppercase', required: null, placeholder: 'Población*'})|raw }} #}
+			{# </div> #}
+			{# <div class="col-sm-6 col-lg-4"> #}
+			{# {{ form_helper_input('participant[Participant][postal_code]', 'number', false, {min: 1000, max: 52999, class: 'form-control border border-black mt-1 text-uppercase', required: null, placeholder: 'Código postal*'})|raw }} #}
+			{# </div> #}
+			{# <div class="col-sm-6 col-lg-4"> #}
+			{# {{ form_helper_input('participant[Participant][province]', 'text', false, {class: 'form-control border border-black mt-1 text-uppercase', required: null, placeholder: 'Provincia*'})|raw }} #}
+			{# </div> #}
+			{# <div class="col-sm-6 col-lg-4"> #}
+			{# {{ form_helper_input('participant[Participant][document]', 'text', false, {class: 'form-control border border-black mt-1 text-uppercase', required: null, placeholder: 'DNI*'})|raw }} #}
+			{# </div> #}
+				<div class="col-12 text-start text-md-end"> <div class="form-check text-shadow">
+					<label class="form-check-label underlined-links text-white">
+						{{ form_helper_input('participant[Participant][accepts_legal]', 'checkbox', 1, {div: false, label: false, required: null, checked: false, class: 'form-check-input'})|raw }}
+						<span class="small checkbox-label-align">
+							He leído y acepto los
+							<a class="text-white" target="_self" href="{{ router_url({action: 'termsConditions'}) }}">
+								<u>Términos y Condiciones</u>
+							</a>.
+						</span>
+					</label>
+				</div>
+				<div class="form-check text-shadow">
+					<label class="form-check-label underlined-links text-white">
+						{{ form_helper_input('participant[Participant][accepts_info]', 'checkbox', 1, {div: false, label: false, checked: false, class: 'form-check-input'})|raw }}
+						<span class="small checkbox-label-align">
+							Acepto recibir publicidad y promociones de Alimerka en mi
+							<span class="d-inline-block">
+								e-mail.</span>
+						</span>
+					</label>
+				</div>
+			</div>
+			<div class="col-12 my-3 text-end">
+				<div class="mt-4 mt-lg-1">
+					{{ form_helper_submit('Registrarse', {class: 'btn btn-white text-uppercase', 'div': false})|raw }}
+				</div>
+			</div>
+		</div>
+	</div>
+	{{ form_helper_close()|raw }}
+</div>

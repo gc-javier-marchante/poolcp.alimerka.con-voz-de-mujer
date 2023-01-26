@@ -1,0 +1,9 @@
+<tr class="{{ tr.class }}" data-remove data-id="{{ deep(element, tr.data_row_id) }}">
+	{% for td in tr.tds %}
+		<td colspan="{{ td.colspan ?: 1 }}" class="{{ td.td_class }} {{ td.options['+class'] }}">
+			{% include 'elements/list/cells/extras.twig' with {extras: td.extras.before} %}
+			{% include 'elements/list/cells/' ~ (td.type ?: 'text') ~ '.twig' %}
+			{% include 'elements/list/cells/extras.twig' with {extras: td.extras.after} %}
+		</td>
+	{% endfor %}
+</tr>

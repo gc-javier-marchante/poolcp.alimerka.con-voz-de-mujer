@@ -1,0 +1,35 @@
+<div class="scroll-anchor" id="winners"></div>
+<section class="bg-white pt-4 mb-3">
+	<div class="container">
+		<div class="row">
+			<div class="row">
+				<div class="col-xl-4 mb-3">
+					<img src="{{ root }}static/img/img-winner.jpg" alt="Pepe Rodríguez con chaquetilla de Alimerka" class="w-100 ">
+				</div>
+				<div class="col-xl-8 text-xl-end mb-3 align-self-center">
+					<h1 class="mb-0 text-uppercase gotham-black text-shine">
+						Ganadores masterclass
+						<span class="d-md-block">de Atún rojo salvaje de Almadraba con Pepe Rodríguez</span>
+					</h1>
+				</div>
+			</div>
+			{% for winnerPageSection in winnerPageSections %}
+				{% if winnerPageSection.WinnerPageSection.is_full_width %}
+					<div class="col-md-12 mb-3">
+						<h1 class="gotham-black mt-3">{{ winnerPageSection.WinnerPageSection.name }}</h1>
+						<p>
+							{{ winnerPageSection.WinnerPageSection.content | nl2br }}
+						</p>
+					</div>
+				{% else %}
+					<div class="col-md-6 mb-3">
+						<h3 class="gotham-black mt-3">{{ winnerPageSection.WinnerPageSection.name }}</h3>
+						<p>
+							{{ winnerPageSection.WinnerPageSection.content | nl2br }}
+						</p>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+</section>

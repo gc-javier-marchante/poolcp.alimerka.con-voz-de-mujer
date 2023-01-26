@@ -1,0 +1,35 @@
+{% set collapse_id = (content.hash ? 'collapse-' ~ content.hash : 'collapse-content') %}
+<div class="card mb-6 mb-xl-9">
+	{% if content.hash %}
+		<div class="card-header border-0 cursor-pointer" role="button" {% if collapse %} data-bs-toggle="collapse" data-bs-target="#{{ collapse_id }}" aria-expanded="true" aria-controls="{{ collapse_id }}" {% endif %}>
+			<div class="card-title m-0">
+				<h3 class="fw-boldest m-0">{{ content.title }}</h3>
+			</div>
+		</div>
+	{% endif %}
+	<div {% if content.hash %} id="{{ collapse_id }}" class="collapse show" {% endif %}>
+		{{ form_helper_open({class: 'form', 'data-ajax-form': null}) | raw }}
+		<div class="card-body p-9">
+			{% for field in fields %}
+				{% if (not is_modal or not field.hide.modal) and (not is_create or not field.hide.create) and (not is_update or not field.hide.update) and (not is_view or not field.hide.view) %}
+					{% set content %}
+					{% include 'elements/list/cells/' ~ (field.displayAs.type ?: 'text') ~ '.twig' with {element: attribute(_context, _element_var_name), td: field.displayAs} %}
+					{% endset %}
+					{% if content | trim | length %}
+						{% include 'elements/form/extras.twig' with {extras: field.extras.before, view: true} %}
+						<div class="row mb-6 fv-row border-bottom">
+							<label class="col-lg-4 col-form-label fw-bold fs-6 pt-0">{{ field.label }}</label>
+							<div class="col-lg-8 {{ field.displayAs.options['+class'] }}">
+								{% include 'elements/list/cells/extras.twig' with {extras: field.displayAs.extras.before} %}
+								{{ content }}
+								{% include 'elements/list/cells/extras.twig' with {extras: field.displayAs.extras.after} %}
+							</div>
+						</div>
+						{% include 'elements/form/extras.twig' with {extras: field.extras.after, view: true} %}
+					{% endif %}
+				{% endif %}
+			{% endfor %}
+		</div>
+		{{ form_helper_close() | raw }}
+	</div>
+</div>

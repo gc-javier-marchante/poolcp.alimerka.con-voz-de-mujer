@@ -1,0 +1,16 @@
+{% set default_value = request_form(field.name) %}
+{% set default_value_date = (default_value ? (default_value is iterable ? default_value.date : default_value|split(' ')[0]) : false) %}
+{% set default_value_time = (default_value ? (default_value is iterable ? default_value.time : default_value|split(' ')[1]) : false) %}
+<div class="row mb-6 fv-row" {{ html_helper_generate_attr(field.formRowOptions) | raw }}>
+	<label class="col-lg-4 col-form-label {% if field.required %}required{% endif %} fw-bold fs-6">{{ field.label }}</label>
+	<div class="col-lg-8">
+		<div class="row">
+			<div class="col-6">
+				{{ form_helper_input(field.name ~ '[date]', 'date', false, {default_value: default_value_date, class: 'form-control form-control-lg form-control-solid mb-3 mb-lg-0', required: not (not field.required)}) | raw }}
+			</div>
+			<div class="col-6">
+				{{ form_helper_input(field.name ~ '[time]', 'time', false, {default_value: default_value_time, class: 'form-control form-control-lg form-control-solid mb-3 mb-lg-0', required: not (not field.required)}) | raw }}
+			</div>
+		</div>
+	</div>
+</div>

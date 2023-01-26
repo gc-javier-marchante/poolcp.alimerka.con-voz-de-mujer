@@ -1,0 +1,55 @@
+validation:
+    group:
+        - int
+        - required
+        - notempty
+    date:
+        - datetime
+        - required
+        - notempty
+    is_used:
+        - tinyint
+    participant_id:
+        - id
+validOrderByExpressions:
+    - id
+    - group
+    - date
+    - is_used
+    - participant_id
+    - created
+    - created_by_user_id
+    - modified
+    - modified_by_user_id
+filter:
+    simple:
+        - id
+        - group
+    advanced:
+        - id
+        - group
+        - date
+        - is_used
+        - participant_id
+        - created
+displayFields:
+    - id
+listFields:
+    - id
+    - group
+    - date
+    - is_used
+    - participant_id
+    - created
+fields:
+    - group
+    - date
+    - is_used
+    - participant_id
+belongsTo:
+    Participant:
+        model: Participant
+        foreign_key: participant_id
+        options: {}
+hasMany: {}
+habtm: {}

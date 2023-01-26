@@ -1,0 +1,107 @@
+validation:
+    picture_category_id:
+        - id
+        - required
+        - notempty
+    original_basename:
+        - required
+        - notempty
+    remote_path:
+        - required
+        - notempty
+    mime_type:
+        - required
+        - notempty
+    width:
+        - int
+        - required
+        - notempty
+    height:
+        - int
+        - required
+        - notempty
+    320_token:
+        - required
+        - notempty
+    640_token:
+        - required
+        - notempty
+validOrderByExpressions:
+    - id
+    - picture_category_id
+    - original_basename
+    - src
+    - alt
+    - storage
+    - remote_path
+    - path
+    - mime_type
+    - width
+    - height
+    - 320_token
+    - 640_token
+    - created
+    - created_by_user_id
+    - modified
+    - modified_by_user_id
+filter:
+    simple:
+        - id
+        - picture_category_id
+        - original_basename
+        - src
+        - alt
+        - storage
+        - remote_path
+        - path
+        - mime_type
+        - width
+        - height
+    advanced:
+        - id
+        - picture_category_id
+        - original_basename
+        - src
+        - alt
+        - storage
+        - remote_path
+        - path
+        - mime_type
+        - width
+        - height
+        - created
+displayFields:
+    - id
+listFields:
+    - id
+    - picture_category_id
+    - original_basename
+    - src
+    - alt
+    - storage
+    - remote_path
+    - path
+    - mime_type
+    - width
+    - height
+    - created
+fields:
+    - picture_category_id
+    - original_basename
+    - src
+    - alt
+    - storage
+    - remote_path
+    - path
+    - mime_type
+    - width
+    - height
+    - 320_token
+    - 640_token
+belongsTo:
+    PictureCategory:
+        model: PictureCategory
+        foreign_key: picture_category_id
+        options: {}
+hasMany: {}
+habtm: {}

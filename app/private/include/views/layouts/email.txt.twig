@@ -1,0 +1,6 @@
+{{ website_name }}
+{{ constant('LOCALED_ROOT_URL') }}
+
+{{ content_for_layout | raw }}
+
+{{ '©' ~ website_name ~  date_helper_date('Y') }}

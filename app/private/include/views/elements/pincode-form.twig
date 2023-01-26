@@ -1,0 +1,63 @@
+<p class="text-uppercase gotham-bold text-shine mb-1">
+	CÓDIGO DE PARTICIPACIÓN:
+</p>
+{{ form_helper_open({url: '/'}) |raw }}
+<div class="w-75 w-lg-50 ms-auto">
+	{{ form_helper_input('participant[Participant][code]', 'number', false, {min: 1, max: 999999999999999999,
+    required: null, maxlength: 18, class: 'form-control border border-3 border-black bg-white-opacity', div: {class:
+    'mb-3'}})|raw }}
+</div>
+<div class="text-start">
+	{{ html_helper_flash_message({container: {class: 'alert alert-danger'}})| raw }}
+	<div class="row">
+		<div class="col-12">
+			{{ form_helper_input('participant[Participant][name]', 'text', false, {class: 'form-control bg-white-opacity
+            border border-black mt-1 text-uppercase', required: null, placeholder:'Nombre y apellidos*'})|raw }}
+		</div>
+		<div class="col-md-6">
+			{{ form_helper_input('participant[Participant][email]', 'email', false, {class: 'form-control
+            bg-white-opacity border border-black mt-1 text-uppercase', required: null, placeholder: 'E-mail*'})|raw }}
+		</div>
+		<div class="col-md-6">
+			{{ form_helper_input('participant[Participant][telephone]', 'number', false, {min: 600000000, max:
+            999999999, class: 'form-control bg-white-opacity border border-black mt-1 text-uppercase', required: null,
+            placeholder: 'Teléfono*'})|raw }}
+		</div>
+	</div>
+</div>
+
+<button type="submit" class="btn btn-yellow px-5 mb-3">
+	<span class="text-uppercase gotham-bold">
+		Validar
+	</span>
+</button>
+
+<div class="text-start text-md-end">
+	<div class="form-check">
+		<label class="form-check-label underlined-links">
+			{{ form_helper_input('participant[Participant][accepts_legal]', 'checkbox', 1, {div: false,
+            label: false, required: null, checked: false, class: 'form-check-input'})|raw }}
+			<span class="small checkbox-label-align text-shine">
+				He leído y acepto los
+				<a class="text-black" target="_self" href="{{ router_url({action: 'termsConditions'}) }}">
+					<u>términos y condiciones</u>
+				</a>.
+			</span>
+		</label>
+	</div>
+	<div class="form-check">
+		<label class="form-check-label underlined-links">
+			{{ form_helper_input('participant[Participant][accepts_info]', 'checkbox', 1, {div: false,
+            label: false, checked: false, class: 'form-check-input'})|raw }}
+			<span class="small checkbox-label-align text-shine">
+				Acepto recibir publicidad y promociones de Alimerka en mi
+				<span class="d-inline-block">
+					e-mail.</span>
+			</span>
+		</label>
+	</div>
+</div>
+{{ form_helper_close()|raw }}
+
+<p class="text-small mt-3 mb-0 text-shine">*Campos obligatorios.</p>
+<p class="text-small text-shine">Promoción válida del 2 al 22 de noviembre de 2022</p>

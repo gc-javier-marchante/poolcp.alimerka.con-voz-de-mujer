@@ -1,0 +1,95 @@
+validation:
+    name:
+        - required
+        - notempty
+    url:
+        - url
+        - required
+        - notempty
+    is_active:
+        - tinyint
+    is_data:
+        - tinyint
+    actions:
+        - required
+        - notempty
+    models:
+        - required
+        - notempty
+validOrderByExpressions:
+    - id
+    - name
+    - method
+    - url
+    - is_active
+    - is_data
+    - actions
+    - models
+    - secret
+    - created
+    - created_by_user_id
+    - modified
+    - modified_by_user_id
+filter:
+    simple:
+        - name
+    advanced:
+        - method
+        - is_active:
+              type: select
+              associative: true
+              list:
+                  values:
+                      1: "Sí"
+                      0: "No"
+        - is_data:
+              type: select
+              associative: true
+              list:
+                  values:
+                      1: "Sí"
+                      0: "No"
+displayFields:
+    - name
+listFields:
+    - id
+    - name
+    - method
+    - action_entity_summary:
+          label: "Disparadores"
+    - is_data
+    - is_active
+fields:
+    - name
+    - method:
+          type: select
+          list:
+              values:
+                  - POST
+                  - GET
+    - action_entity_summary !create !update:
+          label: "Disparadores"
+    - url
+    - is_data
+    - actions !view:
+          type: select
+          name: "webhook[Webhook][actions][]"
+          options:
+              multiple: multiple
+          list:
+              values:
+                  create: Crear
+                  update: Modificar
+                  delete: Eliminar
+    - models !view:
+          type: select
+          name: "webhook[Webhook][models][]"
+          options:
+              multiple: multiple
+          list:
+              values: {}
+    - secret !create !update
+    - is_active
+belongsTo: {}
+hasMany: {}
+habtm: {}

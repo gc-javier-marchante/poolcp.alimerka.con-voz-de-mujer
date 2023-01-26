@@ -1,0 +1,111 @@
+<table align="center" width="100%" border="0" bgcolor="#fff"
+	style="max-width: 700px; min-width: 700px; width: 700px; border: none; border-collapse: collapse;" cellpadding="0"
+	cellspacing="0">
+	<tr>
+		<td align="center" style="padding: 0; margin: 0;" height="30"></td>
+	</tr>
+	<tr>
+		<td align="center" style="padding: 0; margin: 0;">
+			<p
+				style="font-size: 20px; font-family: sans-serif; color: black; font-weight: normal; text-decoration: none; text-align: center; margin-top: 0; margin-bottom: 0;">
+				Hola
+				{{ participant.Participant.name }}.
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td align="center" style="padding: 0; margin: 0;" height="30"></td>
+	</tr>
+	<tr>
+		<td align="center" style="padding-right: 15px; padding-left: 15px; margin: 0;">
+			<p
+				style="font-size: 20px; font-family: sans-serif; color: black; font-weight: normal; text-decoration: none; text-align: center; margin-top: 0; margin-bottom: 0;">
+				Queremos agradecerte personalmente tu asistencia al
+				<strong
+					style="font-size: 20px; font-family: sans-serif; color: black; font-weight: bold; text-decoration: none; margin-top: 0; margin-bottom: 0px;">
+					Gran Showcooking de Navidad</strong>
+				con el que
+				<strong
+					style="font-size: 20px; font-family: sans-serif; color: black; font-weight: bold; text-decoration: none; margin-top: 0; margin-bottom: 0px;">
+					Alimerka</strong>
+				ha puesto el broche de oro a su
+				<strong
+					style="font-size: 20px; font-family: sans-serif; color: black; font-weight: bold; text-decoration: none; margin-top: 0; margin-bottom: 0px;">
+					35 aniversario.</strong>
+			</p>
+			<br>
+			<p
+				style="font-size: 20px; font-family: sans-serif; color: black; font-weight: normal; text-decoration: none; text-align: center; margin-top: 0; margin-bottom: 0;">
+				Esperamos que lo hayas disfrutado tanto como nosotros.
+			</p>
+			<br>
+			<p
+				style="font-size: 20px; font-family: sans-serif; color: black; font-weight: normal; text-decoration: none; text-align: center; margin-top: 0; margin-bottom: 0;">
+				Además, te enviamos las recetas de los
+				<strong
+					style="font-size: 20px; font-family: sans-serif; color: black; font-weight: bold; text-decoration: none; margin-top: 0; margin-bottom: 0px;">
+					dos menús completos</strong>
+				que elaboramos en directo el pasado martes, para que puedas experimentar en tu cocina durante estas
+				fiestas.
+			</p>
+			<br>
+			<p
+				style="font-size: 20px; font-family: sans-serif; color: black; font-weight: normal; text-decoration: none; text-align: center; margin-top: 0; margin-bottom: 0;">
+				<strong
+					style="font-size: 20px; font-family: sans-serif; color: black; font-weight: bold; text-decoration: none; margin-top: 0; margin-bottom: 0px;">
+					¡Que las disfrutes!</strong>
+			</p>
+			<br>
+		</td>
+	</tr>
+	<tr>
+		<td align="center" style="padding: 0; margin: 0;">
+			<img src="{{ root }}static/img/email/pepe-nacho-firma.jpg" width="600"
+				style="max-width: 100%; height: auto; border: 0;">
+		</td>
+	</tr>
+	<tr>
+		<td align="center" style="padding: 0; margin: 0;" height="30"></td>
+	</tr>
+	<tr>
+		<td align="center" style="padding: 0; margin: 0;">
+			<table align="center" width="100%" border="0" bgcolor="#fff"
+				style="max-width: 700px; min-width: 700px; width: 700px; border: none; border-collapse: collapse;"
+				cellpadding="0" cellspacing="0">
+				<tr>
+					<td align="center" style="padding: 0; margin: 0;" width="75"></td>
+					<td align="center" style="padding: 0; margin: 0;" width="75">
+						<p
+							style="font-size: 14px; font-family: sans-serif; color: black; font-weight: normal; text-decoration: none; text-align: left; margin-top: 0px; margin-bottom: 0px;">
+							<strong
+								style="font-size: 14px; font-family: sans-serif; color: black; font-weight: bold; text-decoration: none; margin-top: 0; margin-bottom: 0px;">Haz
+								click en la imagen para descargarte el recetario:
+							</strong>
+						</p>
+					</td>
+					<td align="center" style="padding: 0; margin: 0;" width="75"></td>
+				</tr>
+				<tr>
+					<td align="center" style="padding: 0; margin: 0;" width="75" height="10"></td>
+					<td align="center" style="padding: 0; margin: 0;" width="550"></td>
+					<td align="center" style="padding: 0; margin: 0;" width="75" height="10"></td>
+				</tr>
+				<tr>
+					<td align="center" style="padding: 0; margin: 0;" width="75"></td>
+					<td align="center" style="padding: 0; margin: 0;">
+						<a href="{{ participant_url(root ~ 'static/ALIMERKA_SHOWCOOKING_RECETARIO_PepeNacho.pdf', participant.Participant.id) }}"
+							style="text-decoration: none; border: none;">
+							<img
+								src="{{ root }}static/img/email/pepe-nacho-receta.jpg" width="550"
+								style="max-width: 100%; height: auto; border: 0;">
+						</a>
+					</td>
+					<td align="center" style="padding: 0; margin: 0;" width="75"></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td align="center" style="padding: 0; margin: 0;" height="30"></td>
+	</tr>
+</table>

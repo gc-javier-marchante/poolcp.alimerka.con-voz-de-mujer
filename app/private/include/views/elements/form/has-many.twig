@@ -1,0 +1,68 @@
+{% set collapse_id = (content.hash ? 'collapse-' ~ content.hash : 'collapse-content') %}
+<div class="card card-flush mb-6 mb-xl-9">
+	<div class="card-header border-0 cursor-pointer" role="button" {% if collapse %} data-bs-toggle="collapse" data-bs-target="#{{ collapse_id }}" aria-expanded="true" aria-controls="{{ collapse_id }}" {% endif %}>
+		<div class="card-title m-0 w-100">
+			<div class="w-100 d-flex flex-stack flex-wrap flex-sm-nowrap">
+				<div class="d-flex flex-column align-items-start justify-content-center flex-wrap me-2">
+					<h3 class="fw-boldest m-0">{{ content.title }}</h3>
+				</div>
+				<div class="d-flex flex-column align-items-start justify-content-center flex-wrap me-2">
+					{% if content.actions %}
+						<div class="d-flex align-items-center flex-nowrap text-nowrap py-1">
+							{% set validActions = [] %}
+							{% set mainAction = null %}
+							{% for action in content.actions %}
+								{% if action.active %}
+									{% set validActions = validActions|merge([action]) %}
+									{% if not mainAction and action.main %}
+										{% set mainAction = action %}
+									{% endif %}
+								{% endif %}
+							{% endfor %}
+							{% if not mainAction and validActions|length > 0 %}
+								{% set mainAction = validActions[0] %}
+							{% endif %}
+							<span class="btn-group" role="group">
+								{% if mainAction %}
+									<a {% if mainAction.confirm %} data-gc-confirm="{{ action.confirm }}" {% endif %} href="{{ (not mainAction.url is iterable) ? mainAction.url : router_url(mainAction.url) }}" class="btn btn-secondary btn-sm" {{ mainAction.attributes | raw }}>{{ mainAction.label}}</a>
+								{% endif %}
+								{% if validActions|length > 1 %}
+									<span class="btn-group" role="group">
+										<button type="button" class="btn btn-sm btn-secondary dropdown-toggle" id="dropDownActions{{ td.data_id }}" data-bs-toggle="dropdown" aria-expanded="false">
+											{% if not mainAction %}
+												{{ i18n__('Actions') }}
+											{% endif %}
+										</button>
+										<ul class="dropdown-menu" aria-labelledby="dropDownActions{{ td.data_id }}">
+											{% for action in validActions %}
+												<li>
+													<a {% if action.confirm %} data-gc-confirm="{{ action.confirm }}" {% endif %} href="{{ (not action.url is iterable) ? action.url : router_url(action.url) }}" class="dropdown-item" {{ action.attributes | raw }}>{{ action.label}}</a>
+												</li>
+											{% endfor %}
+										</ul>
+									</span>
+								{% endif %}
+							</span>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div {% if content.hash %} id="{{ collapse_id }}" class="collapse show" {% endif %}>
+		{{ form_helper_open({class: 'form', 'data-ajax-form': null, url: content.url}) | raw }}
+		{{ form_helper_input('hasMany[]', 'hidden', content.relationship_name, {id: false}) | raw }}
+		<div class="card-body border-top px-9 py-0">
+			{% include 'elements/list/table.twig' with content.list %}
+		</div>
+		<div data-gc-if-has-changes class="card-footer {% if content.hash %}border-top{% endif %} d-flex justify-content-end py-6 px-9">
+			{% if can_view %}
+				<a href="{{ router_url({action: 'view', 0: element_id}) }}" class="btn btn-white btn-active-light-primary me-2">{{ i18n__('Discard') }}</a>
+			{% else %}
+				<a href="{{ router_url({action: 'index'}) }}" class="btn btn-white btn-active-light-primary me-2">{{ i18n__('Discard') }}</a>
+			{% endif %}
+			<button type="submit" class="btn btn-primary">{{ i18n__('Save Changes') }}</button>
+		</div>
+		{{ form_helper_close({format_field: false, checkboxes_field: false, all_inputs_field: false}) | raw }}
+	</div>
+</div>

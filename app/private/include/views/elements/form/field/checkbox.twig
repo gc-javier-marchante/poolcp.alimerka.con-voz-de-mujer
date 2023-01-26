@@ -1,0 +1,10 @@
+<div class="row mb-6 fv-row" {{ html_helper_generate_attr(field.formRowOptions) | raw }}>
+	<label class="col-lg-4 col-form-label {% if field.required %}required{% endif %} fw-bold fs-6">{{ field.label }}</label>
+	<div class="col-lg-8 d-flex align-items-center">
+		{% set config = {required: not (not field.required), label: {content: '', class: 'form-check-label', input: 'sibling'}, class: 'form-check-input w-45px h-30px', div: {class: 'form-check form-check-solid form-switch fv-row'}} %}
+		{% if field.options %}
+			{% set config = config|merge(field.options) %}
+		{% endif %}
+		{{ form_helper_input(field.name, field.type, false, config) | raw  }}
+	</div>
+</div>

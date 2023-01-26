@@ -1,0 +1,151 @@
+validation:
+    code:
+        - required
+        - notempty
+        - unique
+    code_supermarket:
+        - required
+        - notempty
+    code_promotion:
+        - required
+        - notempty
+    email:
+        - email
+    accepts_legal:
+        - tinyint
+    accepts_info:
+        - tinyint
+    requires_address:
+        - tinyint
+    is_completed:
+        - tinyint
+    is_sent:
+        - tinyint
+    document:
+        - isValidSpanishIdentityDocument
+validOrderByExpressions:
+    - id
+    - code
+    - code_supermarket
+    - code_promotion
+    - name
+    - address
+    - city
+    - postal_code
+    - province
+    - telephone
+    - email
+    - document
+    - accepts_legal
+    - accepts_info
+    - requires_address
+    - is_completed
+    - is_sent
+    - created
+    - created_by_user_id
+    - modified
+    - modified_by_user_id
+filter:
+    simple:
+        - id
+        - code
+        - name
+        - telephone
+        - email
+        - document
+    advanced:
+        - id
+        - code_promotion:
+              type: select
+              list:
+                  values:
+                      1120: "Gran show cooking"
+        - is_winner:
+              type: select
+              options:
+                  associative: true
+              list:
+                  values:
+                      0: "No"
+                      1: "Sí"
+        - is_confirmed:
+              type: select
+              options:
+                  associative: true
+              list:
+                  values:
+                      0: "No"
+                      1: "Sí"
+displayFields:
+    - name
+listFields:
+    - id
+    - code !index
+    - code_supermarket !index
+    - code_promotion
+    - name
+    - address !index
+    - city !index
+    - postal_code !index
+    - province !index
+    - telephone !index
+    - email !index
+    - document !index
+    - accepts_legal !index
+    - accepts_info !index
+    - requires_address !index
+    - is_completed !index
+    - is_winner
+    - created
+fields:
+    - code:
+          options:
+              disabled_no_submit: true
+          displayAs:
+              format: false
+    - code_supermarket:
+          options:
+              disabled_no_submit: true
+    - code_promotion:
+          options:
+              disabled_no_submit: true
+    - name:
+          options:
+              disabled_no_submit: true
+    - address:
+          options:
+              disabled_no_submit: true
+    - city:
+          options:
+              disabled_no_submit: true
+    - postal_code:
+          options:
+              disabled_no_submit: true
+    - province:
+          options:
+              disabled_no_submit: true
+    - telephone:
+          options:
+              disabled_no_submit: true
+    - email:
+          options:
+              disabled_no_submit: true
+    - alternative_email:
+        type: email
+    - document:
+          options:
+              disabled_no_submit: true
+    - accepts_legal:
+          options:
+              disabled_no_submit: true
+    - accepts_info:
+          options:
+              disabled_no_submit: true
+    - is_completed:
+          options:
+              disabled_no_submit: true
+    - is_confirmed:
+          options:
+              disabled_no_submit: true
+hasMany: {}
+habtm: {}

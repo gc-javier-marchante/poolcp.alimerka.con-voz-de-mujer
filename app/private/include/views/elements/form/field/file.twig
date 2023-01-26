@@ -1,0 +1,7 @@
+<div class="row mb-6 fv-row" {{ html_helper_generate_attr(field.formRowOptions) | raw }}>
+	<label class="col-lg-4 col-form-label fw-bold fs-6">{{ field.label }}</label>
+	<div class="col-lg-8">
+		{% set file_ = deep(_context, field.fileInfo) %}
+		{% include 'elements/form/file-input.twig' with {name: field.name, readable: field.label, value: file_.src, display_value: file_.original_basename, default_value: null} %}
+	</div>
+</div>

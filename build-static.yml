@@ -1,0 +1,23 @@
+operations:
+        compileScss:
+                - "style.scss"
+                - "app.scss"
+                - "plugins.scss"
+        autoPrefixCss:
+                - "style.css"
+                - "app.css"
+                - "plugins.css"
+        combineJsFolders:
+                - "app.js"
+                - "components.js"
+                - "admin.js"
+        minifyJavascript:
+                - "app.js"
+        blackListCss:
+                - "style.css"
+                - "app.css"
+                - "plugins.css"
+        minifyCss:
+                - "style.css"
+                - "app.css"
+                - "plugins.css"

@@ -1,0 +1,201 @@
+/// Replace `$search` with `$replace` in `$string`
+/// @author Hugo Giraudel
+/// @param {String} $string - Initial string
+/// @param {String} $search - Substring to replace
+/// @param {String} $replace ('') - New value
+/// @return {String} - Updated string
+@function str-replace($string, $search, $replace: "") {
+    $index: str-index($string, $search);
+
+    @if $index {
+        @return str-slice($string, 1, $index - 1) + $replace +
+            str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+
+    @return $string;
+}
+
+$sizes: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    x2l: 1500px,
+);
+
+@mixin break($size) {
+    @if ($size != "xs") {
+        @media (min-width: map-get($sizes, $size)) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+@mixin broken-size($prefix, $size, $suffix) {
+    @if ($size != "xs") {
+        @include break($size) {
+            .#{$prefix}-#{$size}-#{$suffix} {
+                @content;
+            }
+        }
+    } @else {
+        .#{$prefix}-#{$suffix} {
+            @content;
+        }
+    }
+}
+
+@mixin bg-size($name) {
+    .bg-#{$name} {
+        background-size: $name !important;
+    }
+}
+
+@mixin bg-position($name) {
+    .bg-#{$name} {
+        background-position: $name !important;
+    }
+}
+
+@mixin bg-image($name) {
+    .bg-image-#{$name} {
+        background-image: url(../img/bg-#{$name}.jpg) !important;
+        background-repeat: no-repeat !important;
+    }
+}
+
+@mixin bg-color($name, $color) {
+    .bg-#{$name} {
+        background-color: $color !important;
+
+        &.bg-or,
+        &.bg-ol {
+            position: relative;
+
+            &:after {
+                content: " ";
+                background-color: $color !important;
+                position: absolute;
+                top: 0;
+                left: 100%;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        &.bg-ol {
+            &:after {
+                left: -100%;
+            }
+        }
+    }
+}
+
+@mixin border-color($name, $color) {
+    .border-#{$name} {
+        border-color: $color !important;
+    }
+}
+
+@mixin text-color($name, $color) {
+    .text-#{$name} {
+        color: $color !important;
+    }
+}
+
+@mixin btn-color($name, $background_color, $text_color, $text_hover_color, $shadow_position) {
+    .btn-#{$name} {
+        &,
+        &:visited,
+        &:active,
+        &:focus {
+            color: $text_color !important;
+        }
+        background-color: $background_color;
+        &:hover {
+            color: $text_hover_color !important;
+        }
+        &.btn-shadow {
+            box-shadow: $shadow_position $shadow_position 0 rgba($background_color, 0.4);
+        }
+    }
+}
+
+@mixin text-family($name, $default) {
+    .text-#{str-replace(to-lower-case($name), " ", "-")} {
+        font-family: "#{$name}", #{$default};
+    }
+}
+
+@mixin btn-size($name, $size) {
+    .btn-group-#{$name} > .btn,
+    .btn-#{$name} {
+        padding: #{$size/2} #{$size};
+        font-size: #{$size * 1.25};
+        line-height: 1.5;
+        border-radius: #{$size * 0.3};
+    }
+}
+
+@mixin btn-padding($name, $size) {
+    .btn-padding-#{$name} {
+        padding: #{$size/2} #{$size} !important;
+    }
+}
+
+@mixin border-side($side, $size) {
+    .border-#{$side}-#{$size} {
+        border-#{$side}-width: #{$size}px !important;
+    }
+}
+
+@mixin border($size) {
+    .border-#{$size} {
+        border-width: #{$size}px !important;
+    }
+
+    @include border-side(top, $size);
+    @include border-side(left, $size);
+    @include border-side(right, $size);
+    @include border-side(bottom, $size);
+}
+
+@mixin w($size, $percent) {
+    @include broken-size(w, $size, $percent) {
+        width: #{$percent}% !important;
+    }
+}
+
+@mixin broken($prefix, $suffix) {
+    @each $size, $size_px in $sizes {
+        @include broken-size($prefix, $size, $suffix) {
+            @content;
+        }
+    }
+}
+
+@mixin broken-property($prefix, $property, $unit, $from, $through, $step: 1, $name_step: 1) {
+    @each $size, $size_px in $sizes {
+        @for $i from 0 through 4 {
+            @include broken-size($prefix, $size, $i * $name_step) {
+                #{$property}: #{$i * $step}#{$unit} !important;
+            }
+        }
+    }
+}
+
+@mixin box-shadow-corner($prefix, $distance, $color, $top, $left) {
+    .#{$prefix}#{if($top, "t", "b")}#{if($left, 'l', 'r')} {
+        box-shadow: #{if($left, -$distance, $distance)} #{if($top, -$distance, $distance)} 0 rgba($color, 0.3);
+    }
+}
+
+@mixin box-shadow($prefix, $distance, $color) {
+    @include box-shadow-corner($prefix, $distance, $color, true, true);
+    @include box-shadow-corner($prefix, $distance, $color, true, false);
+    @include box-shadow-corner($prefix, $distance, $color, false, true);
+    @include box-shadow-corner($prefix, $distance, $color, false, false);
+}

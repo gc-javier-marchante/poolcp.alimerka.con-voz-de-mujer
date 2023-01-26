@@ -1,0 +1,39 @@
+validation:
+    code:
+        - required
+        - notempty
+    group:
+        - int
+        - required
+        - notempty
+validOrderByExpressions:
+    - id
+    - code
+    - group
+    - created
+    - created_by_user_id
+    - modified
+    - modified_by_user_id
+filter:
+    simple:
+        - id
+        - code
+        - group
+    advanced:
+        - id
+        - code
+        - group
+        - created
+displayFields:
+    - id
+listFields:
+    - id
+    - code
+    - group
+    - created
+fields:
+    - code
+    - group
+belongsTo: {}
+hasMany: {}
+habtm: {}

@@ -1,0 +1,64 @@
+<div class="scroll-anchor" id="home"></div>
+<section class="bg-cover bg-image-navidad bg-top bg-light-grey d-flex align-items-top mb-4">
+	<div class="container">
+		<div class="row g-0">
+			<div class="col-12 order-2 col-lg-6 order-lg-1 align-self-end">
+				<img src="{{ root }}static/img/chefs-silu.png" class="w-100" alt="Pepe Rodríguez y Nacho Manzano">
+			</div>
+			<div class="col-12 order-1 col-lg-6 order-lg-2 text-end">
+				<div class="jumbotron bg-transparent mb-0 py-0">
+					{% if website_is_closed %}
+					{% include 'elements/header-finish.twig' %}
+					{% else %}
+					{% if used %}
+					{% include 'elements/header-used.twig' %}
+					{% elseif invalid %}
+					{% include 'elements/header-invalid.twig' %}
+					{% elseif generic_error %}
+					{% include 'elements/header-generic-error.twig' %}
+					{% else %}
+					{% include 'elements/header-pincode.twig' %}
+					{% endif %}
+					{% endif %}
+					{#
+					{% include 'elements/header-winner.twig' %}
+					{% include 'elements/header-loser.twig' %}
+					#}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="scroll-anchor" id="how"></div>
+<section class="mb-5">
+	{% include 'elements/how.twig' %}
+</section>
+{#
+<div class="scroll-anchor" id="establishments"></div>
+<section class="mb-5 text-center">
+	{% include 'elements/establishments-button.twig' %}
+</section>
+#}
+
+<div class="scroll-anchor" id="product"></div>
+<section class="">
+	{% include 'elements/product.twig' %}
+</section>
+
+<div class="scroll-anchor" id="chef"></div>
+<section class="mb-5">
+	{% include 'elements/chef.twig' %}
+</section>
+
+{#
+<div class="scroll-anchor" id="winners"></div>
+<section class="mb-5 text-center">
+	{% include 'elements/winners-button.twig' %}
+</section>
+#}
+
+<div class="scroll-anchor" id="contact"></div>
+<section class="mb-5">
+	{% include 'elements/contact.twig' %}
+</section>

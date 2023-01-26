@@ -1,0 +1,61 @@
+validation:
+    acl_section_id:
+        - id
+        - required
+        - notempty
+    name:
+        - required
+        - notempty
+    name_short:
+        - required
+        - notempty
+    alias:
+        - required
+        - notempty
+    is_full_access:
+        - tinyint
+validOrderByExpressions:
+    - id
+    - acl_section_id
+    - name
+    - name_short
+    - alias
+    - is_full_access
+    - description
+    - created
+    - created_by_user_id
+    - modified
+    - modified_by_user_id
+filter:
+    simple:
+        - id
+        - name
+        - name_short
+        - alias
+    advanced:
+        - id
+        - acl_section_id
+        - alias
+        - is_full_access
+        - created
+displayFields:
+    - alias
+listFields:
+    - id
+    - acl_section_id
+    - alias
+    - is_full_access
+fields:
+    - acl_section_id !update !view
+    - name !update !view
+    - name_short !update !view
+    - alias
+    - is_full_access !update
+    - description
+belongsTo:
+    AclSection:
+        model: AclSection
+        foreign_key: acl_section_id
+        options: {}
+hasMany: {}
+habtm: {}

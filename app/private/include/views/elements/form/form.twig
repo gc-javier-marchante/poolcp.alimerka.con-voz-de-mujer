@@ -1,0 +1,35 @@
+{% set collapse_id = (content.hash ? 'collapse-' ~ content.hash : 'collapse-content') %}
+<div class="card {% if not is_modal %}mb-6 mb-xl-9{% else %}mb-0{% endif %}">
+	{% if content.hash %}
+		<div class="card-header border-0 cursor-pointer" role="button" {% if collapse %} data-bs-toggle="collapse" data-bs-target="#{{ collapse_id }}" aria-expanded="true" aria-controls="{{ collapse_id }}" {% endif %}>
+			<div class="card-title m-0">
+				<h3 class="fw-boldest m-0">{{ content.title }}</h3>
+			</div>
+		</div>
+	{% endif %}
+	<div {% if content.hash %} id="{{ collapse_id }}" class="collapse show" {% endif %}>
+		{{ form_helper_open({class: 'form', 'data-ajax-form': null}) | raw }}
+		<div class="card-body {% if not is_modal %}p-9{% else %}p-0{% endif %}">
+			{% for field in fields %}
+				{% if (not is_modal or not field.hide.modal) and (not is_create or not field.hide.create) and (not is_update or not field.hide.update) and (not is_view or not field.hide.view) %}
+					{% include 'elements/form/extras.twig' with {extras: field.extras.before} %}
+					{% include 'elements/form/field/' ~ (field.type ?: 'text') ~ '.twig' %}
+					{% include 'elements/form/extras.twig' with {extras: field.extras.after} %}
+				{% endif %}
+			{% endfor %}
+		</div>
+		<div {% if not is_create %} data-gc-if-has-changes {% endif %} class="card-footer {% if content.hash %}border-top{% endif %} d-flex justify-content-end py-6 px-9">
+			{% if is_modal %}
+				<a href="javascript:void(0)" data-bs-dismiss="modal" class="btn btn-white btn-active-light-primary me-2">{{ i18n__('Discard') }}</a>
+			{% elseif discard_to_url %}
+				<a href="{{ router_url(discard_to_url) }}" class="btn btn-white btn-active-light-primary me-2">{{ i18n__('Discard') }}</a>
+			{% elseif can_view %}
+				<a href="{{ router_url({action: 'view', 0: element_id}) }}" class="btn btn-white btn-active-light-primary me-2">{{ i18n__('Discard') }}</a>
+			{% else %}
+				<a href="{{ router_url({action: 'index'}) }}" class="btn btn-white btn-active-light-primary me-2">{{ i18n__('Discard') }}</a>
+			{% endif %}
+			<button type="submit" class="btn btn-primary">{{ i18n__('Save Changes') }}</button>
+		</div>
+		{{ form_helper_close() | raw }}
+	</div>
+</div>

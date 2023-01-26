@@ -1,0 +1,19 @@
+{
+  "require": {
+    "gestycontrol/gestymvc-cli": "^1.3",
+    "phpunit/phpunit": "^9.1",
+    "aws/aws-sdk-php": "^3.180",
+    "dragonmantank/cron-expression": "^3.3"
+  },
+  "require-dev": {
+    "mrclay/minify": "^3.0",
+    "scssphp/scssphp": "^1.1",
+    "padaliyajay/php-autoprefixer": "^1.2"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/gestycontrol/gestycontrol.gestymvc.v3.2.git"
+    }
+  ]
+}

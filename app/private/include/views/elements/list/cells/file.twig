@@ -1,0 +1,8 @@
+{% set file_ = deep(element, td.file) %}
+{% if file_.id %}
+	{% include 'elements/list/cells/link.twig' with {td: {
+        text: file_.original_basename,
+        new_window: true,
+        url: file_.src,
+    }} %}
+{% endif %}

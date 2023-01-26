@@ -1,0 +1,10 @@
+{% set config = {label: false, required: not (not field.required), class: 'form-select form-select-solid', 'data-control': 'select2', placeholder: i18n__('Select...'), div: false} %}
+{% if field.options %}
+	{% set config = config|merge(field.options) %}
+{% endif %}
+<div class="row mb-6 fv-row" {{ html_helper_generate_attr(field.formRowOptions) | raw }}>
+	<label class="col-lg-4 col-form-label {% if field.required %}required{% endif %} fw-bold fs-6">{{ field.label }}</label>
+	<div class="col-lg-8">
+		{{ form_helper_select(field.name, (formFieldSelectList[field.name] ? attribute(_context, formFieldSelectList[field.name]) : field.list.values), false, config) | raw  }}
+	</div>
+</div>

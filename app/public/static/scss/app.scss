@@ -1,0 +1,290 @@
+@import "base.scss";
+
+@font-face {
+    font-family: "Poppins";
+    font-display: swap;
+    src: url("../fonts/Poppins-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: "PoppinsSemibold";
+    font-display: swap;
+    src: url("../fonts/Poppins-SemiBold.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: "PoppinsBold";
+    font-display: swap;
+    src: url("../fonts/Poppins-Bold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Gotham";
+    font-display: swap;
+    src: url("../fonts/Gotham-Book.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: "GothamMedium";
+    font-display: swap;
+    src: url("../fonts/Gotham-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: "GothamBold";
+    font-display: swap;
+    src: url("../fonts/Gotham-Bold.otf") format("opentype");
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: "GothamBlack";
+    font-display: swap;
+    src: url("../fonts/Gotham-Black.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+header {
+    font-size: 1.2em;
+}
+
+html,
+body {
+    font-size: 16px;
+    font-weight: 400;
+
+    strong {
+        font-weight: 700;
+    }
+}
+
+body {
+    @extend .text-poppins;
+
+    &.with-fixed-navbar {
+        padding-top: 3.81rem;
+
+        .scroll-anchor {
+            position: relative;
+            top: -3.81rem;
+        }
+    }
+}
+
+a:link,
+a:visited,
+a:active {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+.h1,
+.h2,
+.h3 {
+    @extend .text-gotham;
+    font-weight: 400;
+    line-height: 110%;
+    letter-spacing: -1px;
+
+    strong {
+        font-weight: 600;
+    }
+}
+h4,
+h5,
+h6,
+.h4,
+.h5,
+.h6 {
+    @extend .text-poppins;
+    font-weight: 400;
+    line-height: 110%;
+    letter-spacing: -1px;
+
+    strong {
+        font-weight: 600;
+    }
+}
+.gotham-bold {
+    @extend .text-gothambold;
+    font-weight: 600;
+}
+.gotham-black {
+    @extend .text-gothamblack;
+    font-weight: 700;
+}
+.poppins-bold {
+    @extend .text-poppinsbold;
+    font-weight: 600;
+}
+.text-big {
+    font-size: 1rem;
+    @include break(md) {
+        font-size: 1.3rem;
+        line-height: 110%;
+    }
+}
+
+.navbar {
+    min-height: 3.81rem;
+}
+
+.navbar-brand {
+    img {
+        height: 3.8rem;
+    }
+}
+.text-shadow {
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 1), 0px 0px 7px rgba(0, 0, 0, 1);
+}
+.text-shadow-orange {
+    text-shadow: 0px 0px 10px rgba(235, 125, 0, 0.9);
+}
+.text-shine {
+    text-shadow: 0px 0px 5px rgba(255, 255, 255, 1), 0px 0px 7px rgba(255, 255, 255, 1);
+}
+
+.box-shadow {
+    box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.img-shadow {
+    -webkit-filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.1));
+}
+
+.line-height-low {
+    line-height: 120%;
+}
+.text-small {
+    font-size: 14px;
+}
+.text-legal {
+    font-size: 12px;
+}
+
+section.full-height {
+    @include break(md) {
+        margin-top: -5.3rem;
+        padding-top: 5.3rem;
+        margin-bottom: -18.85rem;
+        padding-bottom: 18.85rem;
+        min-height: 100vh;
+    }
+
+    @include break(lg) {
+        margin-bottom: -17.3rem;
+        padding-bottom: 17.3rem;
+    }
+
+    @include break(xl) {
+        margin-bottom: -15.8rem;
+        padding-bottom: 15.8rem;
+    }
+}
+
+.wrapped-container {
+    @media (min-width: 1350px) {
+        max-width: 1206px;
+        position: relative;
+        left: 33px;
+    }
+}
+
+.jumbotron {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #e9ecef;
+    border-radius: 0.3rem;
+}
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.smallish {
+    @media all and (max-width: 1450px) {
+        font-size: 0.8rem;
+    }
+    @media all and (max-width: 900px) {
+        font-size: 0.65rem;
+    }
+    @media all and (max-width: 767px) {
+        font-size: 1.2rem;
+    }
+}
+
+.smaller {
+    font-size: 0.6rem;
+}
+
+.main-gradient {
+    background: -webkit-gradient(
+        left top,
+        right top,
+        text-stop(0%, #f8981c),
+        text-stop(50%, #ffcf00),
+        text-stop(100%, #ffe94f)
+    );
+    background: #ffcf00;
+    background: -moz-linear-gradient(left, #f8981c 0%, #ffcf00 50%, #ffe94f 100%);
+    background: -webkit-linear-gradient(left, #f8981c 0%, #ffcf00 50%, #ffe94f 100%);
+    background: -o-linear-gradient(left, #f8981c 0%, #ffcf00 50%, #ffe94f 100%);
+    background: -ms-linear-gradient(left, #f8981c 0%, #ffcf00 50%, #ffe94f 100%);
+    background: linear-gradient(to right, #f8981c 0%, #ffcf00 50%, #ffe94f 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F8981C', endColorstr='#FFCF00', GradientType=1 );
+}
+
+.mh-650 {
+    min-height: 40rem;
+}
+
+.header-title {
+    @include break(xs) {
+        font-size: calc(1rem + 0.9vw);
+    }
+
+    @include break(sm) {
+        font-size: calc(1.325rem + 0.9vw);
+    }
+}
+
+.btn-yellow {
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        color: #000 !important;
+        box-shadow: inset 0 0 0 25px white;
+    }
+}
+
+.form-control::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $color_black;
+    opacity: 1; /* Firefox */
+}
+
+.form-control:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #000000;
+}
+
+.form-control::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #000000;
+}
+
+.bg-black-opacity {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.bg-white-opacity {
+    background-color: rgba(255, 255, 255, 0.7) !important;
+}

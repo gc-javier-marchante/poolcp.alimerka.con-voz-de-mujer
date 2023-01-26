@@ -1,0 +1,38 @@
+<div class="d-flex flex-column flex-lg-row flex-column-fluid">
+	{% include 'users/login/sidebar.twig' %}
+	<div class="d-flex flex-column flex-lg-row-fluid py-10">
+		<div class="d-flex flex-center flex-column flex-column-fluid">
+			<div class="w-lg-600px p-10 p-lg-15 mx-auto">
+				{{ form_helper_open({class: 'form w-100 mb-10', 'data-ajax-form': null}) | raw }}
+				<div class="text-center mb-10">
+					<img alt="Logo" class="mh-125px" src="{{ root }}static/img/svg/misc/smartphone.svg"/>
+				</div>
+				<div class="text-center mb-10">
+					<h1 class="text-dark mb-3">{{ i18n__('Two Step Verification') }}</h1>
+					<div class="text-muted fw-bold fs-5 mb-5">{{ i18n__('Enter the verification code from your phone.') }}</div>
+				</div>
+				<div class="px-md-10">
+					<div class="fw-bolder text-start text-dark fs-6 mb-1">{{ i18n__('Type your 6 digit security code') }}</div>
+					{{ form_helper_input('otp', 'number', false, {step: 1, label: false, div: {class: 'fv-row mb-5'}, class: 'form-control form-control-lg form-control-solid', autocomplete: 'off', required: null}) | raw }}
+				</div>
+				<div class="mb-10 px-md-10">
+					<div class="d-flex align-items-center">
+						{{ form_helper_input('trust', 'checkbox', 1, {label: {content: i18n__('Do not ask for the code on this computer (for 6 months)'), class: 'form-check-label ms-2 mt-1', input: 'sibling'}, class: 'form-check-input w-45px h-30px', div: {class: 'form-check form-check-solid form-switch fv-row'}}) | raw  }}
+					</div>
+				</div>
+				<div class="d-flex flex-center">
+					<button type="submit" id="kt_sing_in_two_steps_submit" class="btn btn-lg btn-primary fw-bolder">
+						<span class="indicator-label">{{ i18n__('Submit') }}</span>
+						<span class="indicator-progress">{{ i18n__('Please wait...') }}
+							<span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+						</span>
+					</button>
+				</div>
+				{{ form_helper_close() | raw}}
+				<div class="text-center fw-bold fs-5">
+					<a href="{{ router_url({controller: 'Users', action: 'logout' }) }}" class="link-primary fw-bolder fs-5">{{ i18n__('Abort signin') }}</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

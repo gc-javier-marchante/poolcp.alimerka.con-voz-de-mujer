@@ -1,0 +1,13 @@
+{% set text_ = deep(element, td.text) %}
+{% if text_ and td.format == 'datetime' %}
+	{% set text_ = date_helper_date('d/m/Y H:i', date_helper_strtotime(text_)) %}
+{% elseif text_ and td.format == 'date' %}
+	{% set text_ = date_helper_date('d/m/Y', date_helper_strtotime(text_)) %}
+{% elseif (not (text_ is null)) and td.format == 'int' %}
+	{% set text_ = text_ | number_format(0, (lang == 'en' ? '.' : ','), (lang == 'en' ? ',' : '.')) %}
+{% elseif (not (text_ is null)) and td.format == 'decimal' %}
+	{% set text_ = text_ | number_format(2, (lang == 'en' ? '.' : ','), (lang == 'en' ? ',' : '.')) %}
+{% elseif (not (text_ is null)) and td.format == 'bool' %}
+	{% set text_ = text_ ? i18n__('Yes') : i18n__('No') %}
+{% endif %}
+{{ text_ }}

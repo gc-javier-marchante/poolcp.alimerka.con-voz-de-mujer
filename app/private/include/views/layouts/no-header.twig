@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>{{ seo_title ?: website_name }}</title>
+		{% if seo_description %}
+			<meta name="description" content="{{ seo_description }}"/>
+		{% endif %}
+		<meta property="og:site_name" content="{{ website_name }}"/>
+		<meta property="og:title" content="{{ seo_title ?: website_name }}"/>
+		<meta property="og:type" content="website"/>
+		<meta property="og:url" content="{{ canonical_url }}"/>
+		{% if seo_description %}
+			<meta property="og:description" content="{{ seo_description }}"/>
+		{% endif %}
+		{% if og_image %}
+			<meta property="og:image" content="{{ og_image }}"/>
+		{% endif %}
+		{% if og_image_width %}
+			<meta property="og:image:width" content="{{ og_image_width }}"/>
+		{% endif %}
+		{% if og_image_height %}
+			<meta property="og:image:height" content="{{ og_image_height }}"/>
+		{% endif %}
+		{% if canonical_url %}
+			<link rel="canonical" href="{{ canonical_url }}"/>
+		{% endif %}
+		{{ html_helper_css('https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700')| raw }}
+		{{ html_helper_css('plugins.css') | raw }}
+		{{ html_helper_css('style.css') | raw }}
+		<link rel="icon" href="{{ root }}static/img/logos/favicon.ico">
+	</head>
+	<body id="kt_body" class="bg-white header-fixed header-tablet-and-mobile-fixed toolbar-enabled aside-fixed aside-default-enabled">
+		<div class="d-flex flex-column flex-root">
+			{{ content_for_layout | raw }}
+		</div>
+		<script>
+			window.gcPaths = {{ {LOCALED_ROOT_URL: localed_root, ROOT_URL: root } | json_encode | raw }}
+		</script>
+		{{ html_helper_js('plugins.js') | raw }}
+		{{ html_helper_js('components.js') | raw }}
+		{{ html_helper_js('admin.js') | raw }}
+		{{ html_helper_js('::end') | raw }}
+	</body>
+</html>

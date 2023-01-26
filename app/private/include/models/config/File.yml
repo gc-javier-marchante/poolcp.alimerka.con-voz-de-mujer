@@ -1,0 +1,71 @@
+validation:
+    file_category_id:
+        - id
+    mime_type:
+        - required
+        - notempty
+validOrderByExpressions:
+    - id
+    - file_category_id
+    - original_basename
+    - src
+    - alt
+    - storage
+    - remote_path
+    - path
+    - mime_type
+    - created
+    - created_by_user_id
+    - modified
+    - modified_by_user_id
+filter:
+    simple:
+        - id
+        - file_category_id
+        - original_basename
+        - src
+        - alt
+        - storage
+        - remote_path
+        - path
+        - mime_type
+    advanced:
+        - id
+        - file_category_id
+        - original_basename
+        - src
+        - alt
+        - storage
+        - remote_path
+        - path
+        - mime_type
+        - created
+displayFields:
+    - id
+listFields:
+    - id
+    - file_category_id
+    - original_basename
+    - src
+    - alt
+    - storage
+    - remote_path
+    - path
+    - mime_type
+    - created
+fields:
+    - file_category_id
+    - original_basename
+    - src
+    - alt
+    - storage
+    - remote_path
+    - path
+    - mime_type
+belongsTo:
+    FileCategory:
+        model: FileCategory
+        foreign_key: file_category_id
+        options: {}
+hasMany: {}
+habtm: {}

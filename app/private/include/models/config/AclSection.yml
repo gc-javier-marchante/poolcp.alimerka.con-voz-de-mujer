@@ -1,0 +1,33 @@
+validation:
+    content_type_id:
+        - id
+    name:
+        - required
+        - notempty
+validOrderByExpressions:
+    - id
+    - content_type_id
+    - name
+    - created
+    - created_by_user_id
+    - modified
+    - modified_by_user_id
+filter:
+    simple:
+        - id
+        - name
+    advanced:
+        - id
+        - name
+        - created
+displayFields:
+    - name
+listFields:
+    - id
+    - name
+    - created
+fields:
+    - name
+belongsTo: {}
+hasMany: {}
+habtm: {}

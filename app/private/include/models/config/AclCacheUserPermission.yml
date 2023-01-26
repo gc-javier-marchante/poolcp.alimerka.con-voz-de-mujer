@@ -1,0 +1,46 @@
+validation:
+    user_id:
+        - id
+        - required
+        - notempty
+    acl_permission_id:
+        - id
+        - required
+        - notempty
+validOrderByExpressions:
+    - id
+    - user_id
+    - acl_permission_id
+    - created
+    - created_by_user_id
+    - modified
+    - modified_by_user_id
+filter:
+    simple:
+        - id
+    advanced:
+        - id
+        - user_id
+        - acl_permission_id
+        - created
+displayFields:
+    - id
+listFields:
+    - id
+    - user_id
+    - acl_permission_id
+    - created
+fields:
+    - user_id
+    - acl_permission_id
+belongsTo:
+    User:
+        model: User
+        foreign_key: user_id
+        options: {}
+    AclPermission:
+        model: AclPermission
+        foreign_key: acl_permission_id
+        options: {}
+hasMany: {}
+habtm: {}

@@ -1,0 +1,36 @@
+{% if not download_mode %}
+	{% set validActions = [] %}
+	{% set mainAction = null %}
+	{% for action in td.actions %}
+		{% if deep(element, action.active) %}
+			{% set validActions = validActions|merge([action]) %}
+			{% if not mainAction and deep(element, action.main) %}
+				{% set mainAction = action %}
+			{% endif %}
+		{% endif %}
+	{% endfor %}
+	{% if not mainAction and validActions|length > 0 %}
+		{% set mainAction = validActions[0] %}
+	{% endif %}
+	<span class="btn-group noExl" role="group" data-actions-id="{{ deep(element, td.data_id) }}">
+		{% if mainAction %}
+			<a {% if deep(element, mainAction.confirm) %} data-gc-confirm="{{ deep(element, action.confirm) | replace({'%id%': deep(element, td.data_id), '%parent_id%': crud_parent_record_id}) }}" {% endif %} href="{{ (not mainAction.url is iterable) ? mainAction.url : router_url(deep(element, mainAction.url)) | replace({'%id%': deep(element, td.data_id), '%parent_id%': crud_parent_record_id}) }}" class="btn btn-light btn-sm" {{ deep(element, mainAction.attributes) | replace({'%id%': deep(element, td.data_id), '%parent_id%': crud_parent_record_id} ) | raw }}>{{ deep(element, mainAction.label)}}</a>
+		{% endif %}
+		{% if validActions|length > 1 %}
+			<span class="btn-group" role="group">
+				<button type="button" class="btn btn-sm btn-light dropdown-toggle" id="dropDownActions{{ deep(element, td.data_id) }}" data-bs-toggle="dropdown" aria-expanded="false">
+					{% if not mainAction %}
+						{{ i18n__('Actions') }}
+					{% endif %}
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropDownActions{{ deep(element, td.data_id) }}">
+					{% for action in validActions %}
+						<li>
+							<a {% if deep(element, action.confirm) %} data-gc-confirm="{{ deep(element, action.confirm) | replace({'%id%': deep(element, td.data_id), '%parent_id%': crud_parent_record_id}) }}" {% endif %} href="{{ (not action.url is iterable) ? action.url : router_url(deep(element, action.url)) | replace({'%id%': deep(element, td.data_id), '%parent_id%': crud_parent_record_id}) }}" class="dropdown-item" {{ deep(element, action.attributes) | replace({'%id%': deep(element, td.data_id), '%parent_id%': crud_parent_record_id} ) | raw }}>{{ deep(element, action.label)}}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</span>
+		{% endif %}
+	</span>
+{% endif %}

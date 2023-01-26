@@ -1,0 +1,12 @@
+{
+  "liveServer.settings.root": "/public",
+  "triggerTaskOnSave.on": true,
+  "triggerTaskOnSave.tasks": {
+    "build": ["app/public/static/scss/**/*", "app/public/static/sjs/**/*"]
+  },
+  "liveServer.settings.port": 5504,
+  "markdown-pdf.displayHeaderFooter": true,
+  "markdown-pdf.headerTemplate": "<div style=\"font-size: 9px; margin-left: 1cm;\">Gestycontrol</div>",
+  "markdown-pdf.footerTemplate": "<div style=\"font-size: 9px; margin-right: 1cm; margin-left: auto;\"><span class='pageNumber'></span>/<span class='totalPages'></span></div>",
+  "svg.preview.background": "transparent"
+}

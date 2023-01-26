@@ -1,0 +1,35 @@
+{% set collapse_id = (content.hash ? 'collapse-' ~ content.hash : 'collapse-content') %}
+<div class="card-header border-0 cursor-pointer" role="button" {% if collapse %}data-bs-toggle="collapse" data-bs-target="#{{ collapse_id }}" aria-expanded="true" aria-controls="{{ collapse_id }}"{% endif %}>
+	<div class="card-title m-0">
+		<h3 class="fw-boldest m-0">{{ content.title }}</h3>
+	</div>
+</div>
+<div id="{{ collapse_id }}" class="collapse show">
+	{{ form_helper_open({class: 'form', 'data-ajax-form': null, 'data-gc-on-ajax': 'userAvatarChanged'}) | raw }}
+	<div class="card-body border-top p-9">
+		<div class="row mb-6">
+			<label class="col-lg-4 col-form-label fw-bold fs-6">{{ i18n__('Avatar') }}</label>
+			<div class="col-lg-8">
+				{% include 'elements/form/image-input.twig' with {name: 'avatar', readable: i18n__('avatar'), value: user.User.avatar_url, default_value: root ~ 'static/img/avatars/blank.png'} %}
+			</div>
+		</div>
+		<div class="row mb-6">
+			<label class="col-lg-4 col-form-label required fw-bold fs-6">{{ i18n__('Full Name') }}</label>
+			<div class="col-lg-8">
+				<div class="row">
+					<div class="col-lg-6 fv-row">
+						{{ form_helper_input('user[User][first_name]', 'text', false, {class: 'form-control form-control-lg form-control-solid mb-3 mb-lg-0', placeholder: i18n__('First name'), required: null}) | raw }}
+					</div>
+					<div class="col-lg-6 fv-row">
+						{{ form_helper_input('user[User][last_name]', 'text', false, {class: 'form-control form-control-lg form-control-solid', placeholder: i18n__('Last name'), required: null}) | raw }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div data-gc-if-has-changes class="card-footer d-flex justify-content-end py-6 px-9">
+		<button type="reset" class="btn btn-white btn-active-light-primary me-2">{{ i18n__('Discard') }}</button>
+		<button type="submit" class="btn btn-primary">{{ i18n__('Save Changes') }}</button>
+	</div>
+	{{ form_helper_close() | raw }}
+</div>

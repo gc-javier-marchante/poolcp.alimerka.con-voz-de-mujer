@@ -1,0 +1,8 @@
+{% set picture_ = deep(element, td.picture) %}
+{% if picture_.id %}
+	{% if td.tag == 'img' %}
+		<a href="{{ picture_.src }}" target="_blank" class="d-block"><img src="{{ router_url({controller: 'Pictures', action: 'thumb', 0: '640', 1: picture_.id, 3: picture_['640_token']}) }}" alt="" class="w-100 mb-4"></a>
+	{% else %}
+		<a href="{{ picture_.src }}" target="_blank" style="background-image: url({{ router_url({controller: 'Pictures', action: 'thumb', 0: '640', 1: picture_.id, 3: picture_['640_token']}) }})" class="d-block square-crop rounded"></a>
+	{% endif %}
+{% endif %}

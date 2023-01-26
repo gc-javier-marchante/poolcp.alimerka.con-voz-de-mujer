@@ -1,0 +1,122 @@
+// Initialize
+@import "init";
+
+// Components
+@import "components/components";
+
+// Layout
+@import "layout/layout";
+
+.d-status {
+    .d-status-none {
+        display: none !important;
+    }
+    .d-status-block {
+        display: block !important;
+    }
+}
+
+.background-loader {
+    background-image: url(../img/icons/loading.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.top-most {
+    z-index: 2;
+}
+
+.e-0 {
+    right: 0;
+}
+.t-0 {
+    top: 0;
+}
+.b-0 {
+    bottom: 0;
+}
+.s-0 {
+    left: 0;
+}
+
+.square-crop {
+    padding-top: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.table-responsive .dropdown-menu.show {
+    position: fixed !important;
+}
+
+.dataTables_empty {
+    opacity: 0.7;
+    text-align: center;
+}
+
+.card-body .table tr {
+    &[data-id] {
+        td:nth-of-type(1) {
+            padding-left: 0 !important;
+        }
+    }
+    td:first-of-type {
+        padding-left: 0 !important;
+    }
+    td:last-of-type {
+        padding-right: 0 !important;
+    }
+}
+
+.card-body > h2:first-of-type {
+    margin-top: 0 !important;
+}
+
+#kt_wrapper form:not([data-gc-has-changes]) [data-gc-if-has-changes] {
+    display: none !important;
+}
+
+@media print {
+    .fc-button,
+    .btn,
+    #kt_header,
+    .footer,
+    ul.breadcrumb,
+    .fc-timegrid-now-indicator-container {
+        display: none !important;
+    }
+    .content,
+    .fc-timegrid-slot,
+    .fc-daygrid-day,
+    .fc-daygrid-day-frame,
+    .fc-timegrid-col-bg,
+    .fc-timegrid-bg-harness,
+    .fc-non-business,
+    .fc-timegrid-col {
+        background-color: transparent !important;
+    }
+    #calendar {
+        min-height: 90vh;
+    }
+}
+
+.select2-selection {
+    min-height: 43px !important;
+
+    .select2-search__field {
+        display: none !important;
+    }
+}
+
+[data-visibility="false"] {
+    display: none !important;
+}
+
+[disabled],
+.select2-container--disabled {
+    &,
+    * {
+        cursor: not-allowed !important;
+    }
+}

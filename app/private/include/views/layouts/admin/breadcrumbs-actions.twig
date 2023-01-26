@@ -1,0 +1,8 @@
+{% if breadcrumbs or actions %}
+	<div class="toolbar" id="kt_toolbar">
+		<div class="container d-flex flex-stack flex-wrap flex-sm-nowrap">
+			{% include 'layouts/admin/breadcrumbs.twig' %}
+			{% include 'layouts/admin/actions.twig' %}
+		</div>
+	</div>
+{% endif %}

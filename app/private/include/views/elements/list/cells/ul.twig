@@ -1,0 +1,11 @@
+{% set listItems_ = deep(element, td.text) %}
+{% if listItems_ %}
+	{% if not (listItems_ is iterable) %}
+		{% set listItems_ = listItems_|split('\n') %}
+	{% endif %}
+	<ul>
+		{% for list_item in listItems_ %}
+			<li>{{ list_item }}</li>
+		{% endfor %}
+	</ul>
+{% endif %}

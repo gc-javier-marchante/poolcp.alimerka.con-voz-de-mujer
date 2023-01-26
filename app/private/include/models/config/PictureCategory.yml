@@ -1,0 +1,44 @@
+validation:
+    name:
+        - required
+        - notempty
+    picture_category_id:
+        - id
+validOrderByExpressions:
+    - id
+    - name
+    - picture_category_id
+    - created
+    - created_by_user_id
+    - modified
+    - modified_by_user_id
+filter:
+    simple:
+        - id
+        - name
+    advanced:
+        - id
+        - name
+        - picture_category_id
+        - created
+displayFields:
+    - name
+listFields:
+    - id
+    - name
+    - picture_category_id
+    - created
+fields:
+    - name
+    - picture_category_id
+belongsTo:
+    ParentPictureCategory:
+        model: PictureCategory
+        foreign_key: picture_category_id
+        options: {}
+hasMany:
+    Picture:
+        model: Picture
+        foreign_key: picture_category_id
+        options: {}
+habtm: {}

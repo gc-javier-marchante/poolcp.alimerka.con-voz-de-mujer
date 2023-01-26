@@ -1,0 +1,66 @@
+<div class="menu menu-column menu-fit menu-rounded menu-title-gray-600 menu-icon-gray-400 menu-state-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500 fw-bold fs-5 my-5 mt-lg-2 mb-lg-0" id="kt_aside_menu" data-kt-menu="true">
+	<div class="menu-fit hover-scroll-y me-lg-n5 pe-lg-5" id="kt_aside_menu_wrapper" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-wrappers="#kt_aside_menu" data-kt-scroll-offset="20px" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer">
+		{% for adminMenuItem in adminMenu %}
+			{% if adminMenuItem.items %}
+				<div data-kt-menu-trigger="click" class="menu-item {% if adminMenuItem.active %}here show{% endif %} menu-accordion">
+					<span class="menu-link">
+						{% if adminMenuItem.icon %}
+							<span class="menu-icon">
+								<span class="svg-icon svg-icon-3">
+									{{ adminMenuItem.icon | raw }}
+								</span>
+							</span>
+						{% endif %}
+						<span class="menu-title">{{ adminMenuItem.title }}</span>
+						<span class="menu-arrow"></span>
+					</span>
+					<div class="menu-sub menu-sub-accordion {% if adminMenuItem.active %}menu-active-bg{% endif %}">
+						{% for adminMenuSubitem in adminMenuItem.items %}
+							{% if adminMenuSubitem.separator %}
+								<div class="menu-item menu-item-separator">
+									<div class="menu-content">
+										<div class="separator mx-1"></div>
+									</div>
+								</div>
+							{% else %}
+								<div class="menu-item">
+									<a class="menu-link {% if adminMenuSubitem.active %}active{% endif %}" href="{{ router_url(adminMenuSubitem.href) }}">
+										<span class="menu-bullet">
+											<span class="bullet bullet-dot"></span>
+										</span>
+										<span class="menu-title">{{ adminMenuSubitem.title }}</span>
+									</a>
+								</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+			{% elseif adminMenuItem.separator %}
+				<div class="menu-item menu-item-separator">
+					<div class="menu-content">
+						<div class="separator mx-1 my-4"></div>
+					</div>
+				</div>
+			{% elseif adminMenuItem.href %}
+				<div class="menu-item">
+					<a class="menu-link {% if adminMenuItem.active %}active{% endif %}" href="{{ router_url(adminMenuItem.href) }}">
+						{% if adminMenuItem.icon %}
+							<span class="menu-icon">
+								<span class="svg-icon svg-icon-3">
+									{{ adminMenuItem.icon | raw }}
+								</span>
+							</span>
+						{% endif %}
+						<span class="menu-title">{{ adminMenuItem.title }}</span>
+					</a>
+				</div>
+			{% else %}
+				<div class="menu-item">
+					<div class="menu-content">
+						<span class="fw-bold text-muted text-uppercase fs-7">{{ adminMenuItem.title }}</span>
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+</div>

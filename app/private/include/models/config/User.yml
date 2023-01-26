@@ -1,0 +1,105 @@
+validation:
+    acl_profile_id:
+        - id
+    first_name:
+        - required
+        - notempty
+    last_name:
+        - required
+        - notempty
+    email:
+        - email
+        - required
+        - notempty
+    avatar_url:
+        - required
+        - notempty
+    avatar_picture_id:
+        - id
+    level:
+        - int
+    password_digest:
+        - required
+        - notempty
+    salt:
+        - required
+        - notempty
+    failed_attempts:
+        - int
+    banned:
+        - datetime
+    last_login:
+        - datetime
+    last_password_change:
+        - datetime
+    last_reset_request:
+        - datetime
+validOrderByExpressions:
+    - id
+    - acl_profile_id
+    - first_name
+    - last_name
+    - email
+    - avatar_url
+    - avatar_picture_id
+    - password_digest
+    - salt
+    - reset_password_token
+    - failed_attempts
+    - banned
+    - banned_reason
+    - last_login
+    - last_password_change
+    - last_reset_request
+    - otp_seed
+    - created
+    - created_by_user_id
+    - modified
+    - modified_by_user_id
+filter:
+    simple:
+        - id
+        - first_name
+        - last_name
+        - email
+    advanced:
+        - id
+        - first_name
+        - last_name
+        - email
+        - acl_profile_id
+        - created
+displayFields:
+    - first_name
+    - last_name
+listFields:
+    - id
+    - avatar_picture_id
+    - acl_profile_id
+    - first_name
+    - last_name
+    - email
+fields:
+    - avatar_picture_id
+    - first_name
+    - last_name
+    - email
+    - acl_profile_id
+    - api_secret !create !rest
+    - password !update !view !rest
+    - repeat_password !update !view !rest
+    - banned !create
+    - banned_reason !create
+    - last_login !update !create
+    - last_password_change !update !create
+belongsTo:
+    AclProfile:
+        model: AclProfile
+        foreign_key: acl_profile_id
+        options: {}
+    AvatarPicture:
+        model: Picture
+        foreign_key: avatar_picture_id
+        options: {}
+hasMany: {}
+habtm: {}
